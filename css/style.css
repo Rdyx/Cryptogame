@@ -1,0 +1,63 @@
+body {
+    padding: 0;
+    margin: 0;
+    background-image: url('../img/maxresdefault.jpg');
+    background-size: cover;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    color: white;
+}
+
+div {
+    padding: 0 1em 1em 1em;
+}
+
+.hidden {
+    display: none;
+}
+
+.borderRightTopDiv {
+    border-right: 1px dashed dimgrey;
+}
+
+.green {
+    color: lime;
+    font-weight: 900;
+}
+
+a, a:hover, a:visited, a:active {
+    color: limegreen;
+    font-weight: 900;
+}
+
+.fixed-top {
+    height: 4em;
+    border-bottom: 1px solid dimgrey;
+    background-color: black;
+}
+
+.underTopDiv {
+    margin-top: 5em;
+}
+
+.black-div {
+    border: 1px solid dimgrey;
+    background-color: rgba(0,0,0,0.90);
+}
+
+.bottomDiv {
+    color: rgba(105,105,105, 0.5);
+}
+.knowMore {
+    border-bottom: 1px dashed dimgrey;
+}
+
+a.hovered {
+    font-weight: normal;
+    text-decoration: none;
+    color: white;
+}
+.hovered:hover {
+    text-decoration: none;
+    color: limegreen;
+}
