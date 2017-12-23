@@ -11,7 +11,7 @@ $('.listCallsClickable').click(function(){
 });
 
 $('#dropdownMenuMobile').click(function(){
-    $('#dropMenuMobile').removeClass('hidden');
+    $('#dropMenuMobile').toggleClass('hidden');
 });
 
 function getHidden(id1, id2, id3){
