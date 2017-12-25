@@ -1,6 +1,7 @@
 body {
     padding: 0;
     margin: 0;
+    margin-top: 5em;
     background-image: url('../img/maxresdefault.jpg');
     background-size: cover;
     background-attachment: fixed;
@@ -34,10 +35,6 @@ a, a:hover, a:visited, a:active {
     height: 4em;
     border-bottom: 1px solid dimgrey;
     background-color: black;
-}
-
-.underTopDiv {
-    margin-top: 5em;
 }
 
 .black-div {
