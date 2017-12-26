@@ -2,21 +2,28 @@
 
 class Call
 {
+    private $callId;
     private $caller;
     private $crypto;
     private $cryptoURL;
     private $callTime;
     private $callStartPrice;
     private $callStatus;
+    private $callTarget;
+    private $callStartTime;
     private $html;
 
-    public function __construct($caller, $crypto, $cryptoURL, $callTime, $callStartPrice, $callStatus){
+    public function __construct($callId, $caller, $crypto, $cryptoURL, $callTime, $callStartPrice, $callStatus, $callTarget, $callStartTime)
+    {
+        $this->setCallId($callId);
         $this->setCaller($caller);
         $this->setCrypto($crypto);
         $this->setCryptoURL($cryptoURL);
         $this->setCallTime($callTime);
         $this->setCallStartPrice($callStartPrice);
         $this->setCallStatus($callStatus);
+        $this->setCallTarget($callTarget);
+        $this->setCallStartTime($callStartTime);
     }
 
     /**
@@ -114,6 +121,55 @@ class Call
     {
         $this->cryptoURL = $cryptoURL;
     }
+
+    /**
+     * @return mixed
+     */
+    public function getCallId()
+    {
+        return $this->callId;
+    }
+
+    /**
+     * @param mixed $callId
+     */
+    public function setCallId($callId)
+    {
+        $this->callId = $callId;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getCallStartTime()
+    {
+        return $this->callStartTime;
+    }
+
+    /**
+     * @param mixed $callStartTime
+     */
+    public function setCallStartTime($callStartTime)
+    {
+        $this->callStartTime = $callStartTime;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getCallTarget()
+    {
+        return $this->callTarget;
+    }
+
+    /**
+     * @param mixed $callTarget
+     */
+    public function setCallTarget($callTarget)
+    {
+        $this->callTarget = $callTarget;
+    }
+
     /**
      * @return mixed
      */
@@ -131,11 +187,15 @@ class Call
                         <table class="table table-bordered">
                             <tr>
                                 <th class="text-center">Caller</th>
-                                <td><a href="prophete.html">' . $this->getCaller() . '</a></td>
+                                <td><a href="/web/user.php/?userId='.$this->getCaller().'">' . $this->getCaller() . '</a></td>
                             </tr>
                             <tr>
                                 <th class="text-center">Crypto</th>
                                 <td><a href="' . $this->getCryptoURL() . '">' . $this->getCrypto() . '</a></td>
+                            </tr>
+                            <tr>
+                                <th class="text-center">Début du call</th>
+                                <td>' . $this->getCallStartTime() . '</td>
                             </tr>
                             <tr>
                                 <th class="text-center">Durée du call</th>
@@ -143,14 +203,18 @@ class Call
                             </tr>
                             <tr>
                                 <th class="text-center">Départ</th>
-                                <td>' . $this->getCallStartPrice() . '</td>
+                                <td>' . $this->getCallStartPrice() . ' sats</td>
+                            </tr>
+                            <tr>
+                                <th class="text-center">Target</th>
+                                <td>' . $this->getCallTarget() . ' sats</td>
                             </tr>
                             <tr>
                                 <th class="text-center">Statut</th>
                                 <td>' . $this->getCallStatus() . '</td>
                             </tr>
                         </table>
-                        <div class="knowMore"><a href="art1.html">En savoir plus</a></div>
+                        <div class="knowMore"><a href="/web/callId.php/?callId='.$this->getCallId().'">En savoir plus</a></div>
                     </div>';
     }
 }
