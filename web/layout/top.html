@@ -13,9 +13,13 @@
 <body class="text-center">
 <div class="container-fluid fixed-top hidden-xs-down">
     <div class="row">
-        <div class="col mt-3 pl-0 text-left"><a href="/web/index.php"><h3>Cryptogame Calls</h3></a></div>
-        <div class="row mt-3 pr-0">
-            <a class="listCallsClickable hovered" href="../index.php"><h4 class="mt-1 pr-3">All Calls</h4></a>
+        <div class="col mt-3 pl-0 text-left"><h3><a href="/web/index.php">Cryptogame Calls</a></h3></div>
+        <div class="row mt-3">
+            <form class="row text-center" action="/web/cryptos.php/" method="GET">
+                <input autocomplete="off" type="text" name="search" class="text-center btn btn-outline-success" id="searchCrypto" placeholder="BTC, XBY, ETH...">
+                <button class="mr-3 btn btn-outline-success">Rechercher</button>
+            </form>
+            <a class="hovered row col ml-3 pr-0" href="/web/index.php"><h4 class="mt-1 pr-3">All Calls</h4></a>
         </div>
     </div>
 </div>
@@ -28,7 +32,7 @@
         </div>
     </div>
     <div id="dropMenuMobile" class="mt-5 pt-3 fixed-top hidden">
-        <a class="topCallsClickable dropdown-item" href="../index.php">Top Calls</a>
+        <a class="dropdown-item" href="/web/index.php">Top Calls</a>
     </div>
 </div>
 <!--/PETIT SCREEN-->

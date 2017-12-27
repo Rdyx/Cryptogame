@@ -26,6 +26,11 @@ div {
     font-weight: 900;
 }
 
+.red {
+    color: red;
+    font-weight: 900;
+}
+
 a, a:hover, a:visited, a:active {
     color: limegreen;
     font-weight: 900;

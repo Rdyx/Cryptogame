@@ -94,7 +94,7 @@ class UserId
     public function setHtml()
     {
         $this->html = '<div class="container-fluid black-div underTopDiv">
-    <div class="container-fluid mb-2 mt-2 pb-1"><h1>Profil de '.$this->getName().'</h1></div>
+    <div class="container-fluid knowMore mb-3 mt-2 pb-1"><h1>Profil de '.$this->getName().'</h1></div>
     <div class="knowMore mb-5 pb-0 container col border justify-content-around">
         <table class="table">
             <tr>
