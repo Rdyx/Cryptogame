@@ -148,10 +148,19 @@ class UserId
      */
     public function setHtml()
     {
+        if($_SESSION['nick'] === $this->getName()){
+            $editAndSuppr = '<tr>
+                                <td colspan="2"><a class="col" href="/web/editUser.php/?callId='.$this->getName().'">Editer votre profil</a></td>
+                             </tr>';
+        } else {
+            $editAndSuppr = '';
+        }
+
         $this->html = '<div class="container-fluid black-div underTopDiv">
     <div class="container-fluid knowMore mb-3 mt-2 pb-1"><h1>Profil de '.$this->getName().'</h1></div>
     <div class="knowMore mb-5 pb-0 container col border justify-content-around">
         <table class="col table text-center table-bordered">
+            '.$editAndSuppr.'
             <tr>
                 <th class="text-center">Pseudo</th>
                 <td><strong>'.$this->getName().'</strong></td>
