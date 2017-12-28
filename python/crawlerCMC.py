@@ -18,6 +18,7 @@ class QuotesSpider(scrapy.Spider):
                 'currencieShortName' : link.css('td.col-symbol ::text').extract_first(),
                 'currencieMarketCap' : link.css('td.market-cap ::text').re_first(r'\s*(.*)'),
                 'currencieFIATValue' : link.css('td.text-right a.price ::text').extract_first(),
+                'currencieBTCValue' : link.css('td.text-right a.price ::attr(data-btc)').extract_first(),
                 'currencieCirculatingSupply' : link.css('td.circulating-supply a ::text').re_first(r'\s*(.*)'),
                 'currencieVolume' : link.css('td.text-right a.volume ::text').extract_first(),
                 'currencieLastHour' : link.css('td.percent-1h ::text').extract_first(),

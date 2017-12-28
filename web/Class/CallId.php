@@ -18,6 +18,7 @@ class CallId
     private $fiatValue;
     private $supply;
     private $volume;
+    private $description;
     private $html;
 
     /**
@@ -276,11 +277,25 @@ class CallId
         $this->volume = $volume;
     }
 
+    /**
+     * @return mixed
+     */
+    public function getDescription()
+    {
+        return $this->description;
+    }
 
+    /**
+     * @param mixed $description
+     */
+    public function setDescription($description)
+    {
+        $this->description = $description;
+    }
 
     public function __construct($caller, $crypto, $cryptoURL, $callTime, $callStart,
                                 $callStatus, $score, $callStartTime, $callTarget, $lastHour,
-                                $last24Hours, $last7Days, $marketcap, $fiatValue, $supply, $volume)
+                                $last24Hours, $last7Days, $marketcap, $fiatValue, $supply, $volume, $description)
     {
         $this->setCaller($caller);
         $this->setCrypto($crypto);
@@ -298,6 +313,7 @@ class CallId
         $this->setFiatValue($fiatValue);
         $this->setSupply($supply);
         $this->setVolume($volume);
+        $this->setDescription($description);
     }
 
     /**
@@ -331,10 +347,20 @@ class CallId
             $last7days = 'green';
         }
 
+        if ($this->getDescription() !== null){
+            $description = '<tr>
+                    <th class="text-center">Infos supplémentaires</th>
+                    <td><strong>'.$this->getDescription().'</strong></td>
+                </tr>';
+        } else {
+            $description = '';
+        }
+
         $this->html = '<div id="topCalls" class="container-fluid black-div underTopDiv">
     <div class="container-fluid knowMore mb-3 mt-2 pb-1"><h1>Call de '.$this->getCaller().'</h1></div>
         <div class="container col border justify-content-around">
             <table class="table text-center">
+                '.$description.'
                 <tr>
                     <th class="text-center">Caller</th>
                     <td><a href="/web/user.php/?userId='.$this->getCaller().'">'.$this->getCaller().'</a></td>
@@ -352,16 +378,16 @@ class CallId
                     <td>'.$this->getCallStartTime().'</td>
                 </tr>
                 <tr>
-                    <th class="text-center">Durée du call</th>
+                    <th class="text-center">Fin du call</th>
                     <td>'.$this->getCallTime().'</td>
                 </tr>
                 <tr>
                     <th class="text-center">Départ</th>
-                    <td>'.$this->getCallStart().' sats</td>
+                    <td>'.$this->getCallStart().'</td>
                 </tr>
                 <tr>
                     <th class="text-center">Target</th>
-                    <td>'.$this->getCallTarget().' sats</td>
+                    <td>'.$this->getCallTarget().'</td>
                 </tr>
                 <tr>
                     <th class="text-center">Statut</th>

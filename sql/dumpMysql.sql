@@ -9,6 +9,8 @@ create table cry_users
 	usr_BTCAdress varchar(255) null,
 	usr_ETHAdress varchar(255) null,
 	usr_LTCAdress varchar(255) null,
+	constraint cry_users_usr_name_uindex
+	unique (usr_name),
 	constraint cry_users_usr_BTCAdress_uindex
 	unique (usr_BTCAdress),
 	constraint cry_users_usr_ETHAdress_uindex

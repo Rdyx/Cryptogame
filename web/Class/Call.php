@@ -206,16 +206,16 @@ class Call
                                 <td>' . $this->getCallStartTime() . '</td>
                             </tr>
                             <tr>
-                                <th class="text-center">Durée du call</th>
+                                <th class="text-center">Fin du call</th>
                                 <td>' . $this->getCallTime() . '</td>
                             </tr>
                             <tr>
                                 <th class="text-center">Départ</th>
-                                <td>' . $this->getCallStartPrice() . ' sats</td>
+                                <td>' . $this->getCallStartPrice() . '</td>
                             </tr>
                             <tr>
                                 <th class="text-center">Target</th>
-                                <td>' . $this->getCallTarget() . ' sats</td>
+                                <td>' . $this->getCallTarget() . '</td>
                             </tr>
                             <tr>
                                 <th class="text-center">Statut</th>

@@ -22,3 +22,15 @@ function getHidden(id1, id2, id3){
     $('#'+id2).addClass('hidden');
     $('#'+id3).addClass('hidden');
 }
+
+disabledSubmitEdit($('#newPwd'));
+disabledSubmitEdit($('#newPwd2'));
+
+function disabledSubmitEdit(arg1){
+    arg1.change(function(){
+        $('#submitEdit').prop('disabled', true);
+        if($('#newPwd').val() === $('#newPwd2').val()){
+            $('#submitEdit').prop('disabled', false);
+        }
+    });
+}

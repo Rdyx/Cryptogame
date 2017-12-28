@@ -12,9 +12,9 @@ if(!isset($_SESSION['nick']) || $_SESSION['nick'] === 'Guest') {
             <div class="col-sm-3">
                 <form action="/web/connected.php" method="post">
                     <label for="nick">Pseudo</label>
-                    <input class="form-control" type="text" name="nick" id="nick">
+                    <input class="form-control" type="text" name="nick" id="nick" required>
                     <label class="mt-2" for="pwd">Mot de passe</label>
-                    <input class="form-control" type="password" name="pwd" id="pwd">
+                    <input class="form-control" type="password" name="pwd" id="pwd" required>
                     <button class="btn btn-outline-success mt-3" type="submit">Se connecter</button>
                 </form>
             </div>

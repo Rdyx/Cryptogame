@@ -25,7 +25,8 @@ while ($row = $result->fetch_assoc()) {
         $row['cry_marketcap'],
         $row['cry_fiatValue'],
         $row['cry_supply'],
-        $row['cry_volume']);
+        $row['cry_volume'],
+        $row['top_description']);
     $callIdClass->setHtml();
     echo $callIdClass->getHtml();
 };
