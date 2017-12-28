@@ -4,8 +4,8 @@ if(!isset($_SESSION['nick']) || $_SESSION['nick'] === 'Guest') {
     htmlspecialchars($_SESSION['nick'] = 'Guest');
     $test = $_SESSION['nick'];
 };
-$test = $_SESSION['nick'];
-echo $test;
+
+$nick = htmlspecialchars($_SESSION['nick']);
 $servername = "localhost";
 $username = "root";
 $password = "admin";

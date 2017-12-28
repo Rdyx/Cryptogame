@@ -69,7 +69,7 @@ while($row = $result->fetch_array()){
                         <label for="targetPrice" class="col-form-label">Target</label>
                     </td>
                     <td class="align-middle">
-                        <input autocomplete="off" step="0.000000001" class="text-center form-control" type="number" id="targetPrice" name="targetPrice" placeholder="Prix visé">
+                        <input autocomplete="off" step="0.000000001" class="text-center form-control" type="number" id="targetPrice" name="targetPrice" placeholder="Prix visé" required>
                     </td>
                 </tr>
                 <tr>

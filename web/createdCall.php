@@ -46,7 +46,7 @@ function erreur($arg1, $arg2, $arg3){
         <meta http-equiv="refresh" content="3; URL='.$arg3.'">';
 }
 
-if(floatval($targetPrice) > $startPrice || floatval($targetPrice) === '' || floatval($targetPrice) === null) {
+if(floatval($targetPrice) > floatval($startPrice) || floatval($targetPrice) === '' || floatval($targetPrice) === null) {
     if ($timerValue === 'Minute') {
         if ($timerNumber < 15) {
             echo erreur('La durée du call est trop courte ! 15 Minutes minimum !', 'Oups !', '/web/createCall.php');
@@ -87,7 +87,7 @@ if(floatval($targetPrice) > $startPrice || floatval($targetPrice) === '' || floa
         echo erreur('Tu n\'as pas bien suivi le formulaire coquinou ! Recommence !', 'Oups !', '/web/createCall.php');
     }
 } else {
-    echo erreur('La target est inférieure au prix actuel !', 'Oups !', '/web/createCall.php');
+    echo erreur('La target est inférieure au prix actuel ! ('.$startPrice.' BTC)', 'Oups !', '/web/createCall.php');
 }
 
 function pushCall($conn, $usrId, $crypto, $callStopDate, $startPrice, $statut, $targetPrice, $date, $description){
@@ -102,4 +102,6 @@ function pushCall($conn, $usrId, $crypto, $callStopDate, $startPrice, $statut, $
     }
 };
 
+require('layout/bottom.html');
+?>
 

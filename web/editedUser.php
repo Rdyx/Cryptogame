@@ -2,7 +2,6 @@
 require('layout/dbconnect.php');
 require('layout/top.php');
 
-$nick = htmlspecialchars($_SESSION['nick']);
 $oldPwd = htmlspecialchars($_POST['oldPwd']);
 $newPwd = htmlspecialchars($_POST['newPwd']);
 $newPwd2 = htmlspecialchars($_POST['newPwd2']);
