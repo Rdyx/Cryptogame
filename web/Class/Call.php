@@ -183,8 +183,16 @@ class Call
      */
     public function setHtml()
     {
+        if($_SESSION['nick'] === $this->getCaller()){
+            $editAndSuppr = '<tr>
+                                <td colspan="2"><a class="col" href="/web/edit.php/?callId='.$this->getCallId().'">Editer</a><a class="col" href="/web/delete.php/?callId='.$this->getCallId().'">Supprimer</a></td>
+                             </tr>';
+        } else {
+            $editAndSuppr = '';
+        }
+
         $this->html = '<div class="col-sm-4 border">
-                        <table class="table table-bordered">
+                        <table class="table table-bordered text-center">
                             <tr>
                                 <th class="text-center">Caller</th>
                                 <td><a href="/web/user.php/?userId='.$this->getCaller().'">' . $this->getCaller() . '</a></td>
@@ -213,6 +221,7 @@ class Call
                                 <th class="text-center">Statut</th>
                                 <td>' . $this->getCallStatus() . '</td>
                             </tr>
+                            '.$editAndSuppr.'
                         </table>
                         <div class="knowMore"><a href="/web/callId.php/?callId='.$this->getCallId().'">En savoir plus</a></div>
                     </div>';

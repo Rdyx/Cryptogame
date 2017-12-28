@@ -21,6 +21,14 @@ div {
     border-right: 1px dashed dimgrey;
 }
 
+#dropMenuMobile {
+    height: 21%;
+}
+
+#dropMenuMobileIndex {
+    height: 26%;
+}
+
 .green {
     color: lime;
     font-weight: 900;
@@ -59,6 +67,7 @@ a.hovered {
     text-decoration: none;
     color: white;
 }
+
 .hovered:hover {
     text-decoration: none;
     color: limegreen;

@@ -11,6 +11,13 @@ class CallId
     private $score;
     private $callStartTime;
     private $callTarget;
+    private $lastHour;
+    private $last24Hours;
+    private $last7Days;
+    private $marketcap;
+    private $fiatValue;
+    private $supply;
+    private $volume;
     private $html;
 
     /**
@@ -157,7 +164,123 @@ class CallId
         $this->callTarget = $callTarget;
     }
 
-    public function __construct($caller, $crypto, $cryptoURL, $callTime, $callStart, $callStatus, $score, $callStartTime, $callTarget)
+    /**
+     * @return mixed
+     */
+    public function getLastHour()
+    {
+        return $this->lastHour;
+    }
+
+    /**
+     * @param mixed $lastHour
+     */
+    public function setLastHour($lastHour)
+    {
+        $this->lastHour = $lastHour;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getLast24Hours()
+    {
+        return $this->last24Hours;
+    }
+
+    /**
+     * @param mixed $last24Hours
+     */
+    public function setLast24Hours($last24Hours)
+    {
+        $this->last24Hours = $last24Hours;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getLast7Days()
+    {
+        return $this->last7Days;
+    }
+
+    /**
+     * @param mixed $last7Days
+     */
+    public function setLast7Days($last7Days)
+    {
+        $this->last7Days = $last7Days;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getMarketcap()
+    {
+        return $this->marketcap;
+    }
+
+    /**
+     * @param mixed $marketcap
+     */
+    public function setMarketcap($marketcap)
+    {
+        $this->marketcap = $marketcap;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getFiatValue()
+    {
+        return $this->fiatValue;
+    }
+
+    /**
+     * @param mixed $fiatValue
+     */
+    public function setFiatValue($fiatValue)
+    {
+        $this->fiatValue = $fiatValue;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getSupply()
+    {
+        return $this->supply;
+    }
+
+    /**
+     * @param mixed $supply
+     */
+    public function setSupply($supply)
+    {
+        $this->supply = $supply;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getVolume()
+    {
+        return $this->volume;
+    }
+
+    /**
+     * @param mixed $volume
+     */
+    public function setVolume($volume)
+    {
+        $this->volume = $volume;
+    }
+
+
+
+    public function __construct($caller, $crypto, $cryptoURL, $callTime, $callStart,
+                                $callStatus, $score, $callStartTime, $callTarget, $lastHour,
+                                $last24Hours, $last7Days, $marketcap, $fiatValue, $supply, $volume)
     {
         $this->setCaller($caller);
         $this->setCrypto($crypto);
@@ -168,6 +291,13 @@ class CallId
         $this->setScore($score);
         $this->setCallStartTime($callStartTime);
         $this->setCallTarget($callTarget);
+        $this->setLastHour($lastHour);
+        $this->setLast24Hours($last24Hours);
+        $this->setLast7Days($last7Days);
+        $this->setMarketcap($marketcap);
+        $this->setFiatValue($fiatValue);
+        $this->setSupply($supply);
+        $this->setVolume($volume);
     }
 
     /**
@@ -183,15 +313,36 @@ class CallId
      */
     public function setHtml()
     {
+        if ($this->getLastHour() <= 0) {
+            $lastHour = 'red';
+        } else {
+            $lastHour = 'green';
+        }
+
+        if ($this->getLast24Hours() <= 0) {
+            $last24Hours = 'red';
+        } else {
+            $last24Hours = 'green';
+        }
+
+        if ($this->getLast7Days() <= 0) {
+            $last7days = 'red';
+        } else {
+            $last7days = 'green';
+        }
+
         $this->html = '<div id="topCalls" class="container-fluid black-div underTopDiv">
     <div class="container-fluid knowMore mb-3 mt-2 pb-1"><h1>Call de '.$this->getCaller().'</h1></div>
         <div class="container col border justify-content-around">
-            <table class="table">
+            <table class="table text-center">
                 <tr>
                     <th class="text-center">Caller</th>
                     <td><a href="/web/user.php/?userId='.$this->getCaller().'">'.$this->getCaller().'</a></td>
                 </tr>
-
+                <tr>
+                    <th class="text-center">Scoring du caller</th>
+                    <td class="green">'.$this->getScore().'%</td>
+                </tr>
                 <tr>
                     <th class="text-center">Crypto</th>
                     <td><a href="'.$this->getCryptoURL().'">'.$this->getCrypto().'</a></td>
@@ -209,16 +360,43 @@ class CallId
                     <td>'.$this->getCallStart().' sats</td>
                 </tr>
                 <tr>
+                    <th class="text-center">Target</th>
+                    <td>'.$this->getCallTarget().' sats</td>
+                </tr>
+                <tr>
                     <th class="text-center">Statut</th>
                     <td>'.$this->getCallStatus().'</td>
                 </tr>
                 <tr>
-                    <th class="text-center">Scoring du caller</th>
-                    <td class="green">'.$this->getScore().'%</td>
+                    <th class="text-center align-middle">Variation</th>
+                    <td>
+                        <ul class="list-inline mb-0 hidden-md-down">
+                            <li class="list-inline-item borderRightTopDiv mr-3 pr-3 '.$lastHour.'">1h : '.$this->getLastHour().'</li>
+                            <li class="list-inline-item borderRightTopDiv mr-3 pr-3 '.$last24Hours.'">24h : '.$this->getLast24Hours().'</li>
+                            <li class="list-inline-item '.$last7days.'">7j : '.$this->getLast7Days().'</li>
+                        </ul>
+                        <ul class="list-unstyled mb-0 hidden-md-up">
+                            <li class="'.$lastHour.'">1h : '.$this->getLastHour().'</li>
+                            <li class="'.$last24Hours.'">24h : '.$this->getLast24Hours().'</li>
+                            <li class="'.$last7days.'">7j : '.$this->getLast7Days().'</li>
+                        </ul>
+                    </td>
                 </tr>
                 <tr>
-                    <th class="text-center">Target</th>
-                    <td>'.$this->getCallTarget().' sats</td>
+                    <th class="text-center">Marketcap</th>
+                    <td>'.$this->getMarketcap().'</td>
+                </tr>
+                <tr>
+                    <th class="text-center">Valeur</th>
+                    <td>'.$this->getFiatValue().'</td>
+                </tr>
+                <tr>
+                    <th class="text-center">Supply</th>
+                    <td>'.$this->getSupply().'</td>
+                </tr>
+                <tr>
+                    <th class="text-center">Volume</th>
+                    <td>'.$this->getVolume().'</td>
                 </tr>
             </table>
             <div class="knowMore"><a href="/web/index.php">Retourner à l\'accueil </a ></div >

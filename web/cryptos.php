@@ -1,6 +1,6 @@
 <?php
-require('layout/top.html');
 require('layout/dbconnect.php');
+require('layout/top.php');
 
 echo '<div class="container-fluid black-div underTopDiv">
         <div class="container-fluid mb-3 mt-2 pb-1 knowMore">
@@ -35,7 +35,7 @@ if(isset($_GET['search'])) {
             }
 
             echo '<div class="col-sm-4 border">
-              <table class="table table-bordered">
+              <table class="table table-bordered text-center">
                   <tr>
                     <td>' . $row['cry_fullName'] . '</td>
                     <td><a class="crypto-short-name" href="' . $row['cry_url'] . '">' . $row['cry_name'] . '</a></td>

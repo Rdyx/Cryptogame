@@ -1,6 +1,6 @@
 <?php
-require('layout/top.html');
 require('layout/dbconnect.php');
+require('layout/top.php');
 require('Class/CallId.php');
 $callId = htmlspecialchars($_GET["callId"]);
 
@@ -18,7 +18,14 @@ while ($row = $result->fetch_assoc()) {
         $row['top_status'],
         number_format(($row['usr_totalCallNumber']*100)/$row['usr_SuccessCall'], 2),
         $row['top_startTime'],
-        $row['top_target']);
+        $row['top_target'],
+        $row['cry_lastHour'],
+        $row['cry_last24Hours'],
+        $row['cry_last7Days'],
+        $row['cry_marketcap'],
+        $row['cry_fiatValue'],
+        $row['cry_supply'],
+        $row['cry_volume']);
     $callIdClass->setHtml();
     echo $callIdClass->getHtml();
 };

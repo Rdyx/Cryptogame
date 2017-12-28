@@ -1,6 +1,6 @@
 <?php
-require('layout/topIndex.html');
 require('layout/dbconnect.php');
+require('layout/topIndex.php');
 require('Class/Call.php');
 
 echo '<div id="topCalls" class="container-fluid black-div hidden">
