@@ -26,14 +26,15 @@ create table cryptos
 		primary key,
 	cry_url varchar(1000) not null,
 	cry_name varchar(255) not null,
-	cry_fullName varchar(255) null,
+	cry_fullName varchar(255) not null,
 	cry_last7Days varchar(255) null,
 	cry_last24Hours varchar(255) null,
 	cry_lastHour varchar(255) null,
 	cry_volume varchar(255) null,
 	cry_supply varchar(255) null,
 	cry_fiatValue varchar(255) null,
-	cry_marketcap varchar(255) not null
+	cry_btcValue varchar(255) null,
+	cry_marketcap varchar(255) null
 )
 ;
 
@@ -44,10 +45,10 @@ create table topCall
 	usr_id int(10) unsigned not null,
 	cry_id int(10) unsigned not null,
 	top_time varchar(255) null,
-	top_startPrice int not null,
+	top_startPrice varchar(255) not null,
 	top_status varchar(255) null,
-	top_target int not null,
-	top_startTime datetime not null,
+	top_target varchar(255) not null,
+	top_startTime varchar(255) not null,
 	top_description text null,
 	constraint topCall_user_usr_id_fk
 	foreign key (usr_id) references cry_users (usr_id),
