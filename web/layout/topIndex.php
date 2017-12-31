@@ -48,6 +48,7 @@ if(!isset($_SESSION['nick']) || $_SESSION['nick'] === 'Guest') {
                         <a class="dropdown-item" href="/web/user.php/?userId='.$_SESSION['nick'].'">'.$_SESSION['nick'].'</a>
                         <a class="dropdown-item" href="/web/logout.php">Se déconnecter</a>
                         <a class="dropdown-item" href="/web/createCall.php">Créer un Call</a>
+                        <a class="topCallsClickable dropdown-item" href="#">Top Calls</a>
                         <a class="listCallsClickable dropdown-item" href="#">All Calls</a>
                         <form class="dropdown-item" action="/web/cryptos.php/" method="GET">
                             <input autocomplete="off" type="text" name="search" class="text-center btn btn-outline-success" id="searchCrypto" placeholder="BTC, XBY, ETH...">

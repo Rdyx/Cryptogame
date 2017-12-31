@@ -41,7 +41,7 @@ if(!isset($_SESSION['nick']) || $_SESSION['nick'] === 'Guest') {
                     <a class="hovered" href="/web/createCall.php"><h4 class="mt-2 mr-3 pr-3 borderRightTopDiv ">Créer un Call</h4></a>
                     <a class="listCallsClickable hovered" href="/index.php"><h4 class="mt-2 pr-3">All Calls</h4></a>
                 </div>';
-    $boutonsMobile = '<div id="dropMenuMobileIndex" class="mt-5 fixed-top hidden">
+    $boutonsMobile = '<div id="dropMenuMobile" class="mt-5 fixed-top hidden">
                         <a class="dropdown-item" href="/web/user.php/?userId='.$_SESSION['nick'].'">'.$_SESSION['nick'].'</a>
                         <a class="dropdown-item" href="/web/logout.php">Se déconnecter</a>
                         <a class="dropdown-item" href="/web/createCall.php">Créer un Call</a>

@@ -3,7 +3,6 @@ body {
     margin: 0;
     margin-top: 5em;
     background-image: url('../img/maxresdefault.jpg');
-    background-size: cover;
     background-attachment: fixed;
     background-repeat: no-repeat;
     color: white;
@@ -22,11 +21,15 @@ div {
 }
 
 #dropMenuMobile {
-    height: 21%;
+    height: 26%;
 }
 
 #dropMenuMobileIndex {
-    height: 26%;
+    height: 31%;
+}
+
+.not-connected {
+    height: 21%;
 }
 
 .green {
@@ -42,6 +45,10 @@ div {
 a, a:hover, a:visited, a:active {
     color: limegreen;
     font-weight: 900;
+}
+
+.dropdown-item {
+    color: limegreen;
 }
 
 .fixed-top {
