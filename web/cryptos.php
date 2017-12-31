@@ -2,11 +2,14 @@
 require('layout/dbconnect.php');
 require('layout/top.php');
 
-echo '<div class="container-fluid black-div underTopDiv">
+echo '<div id="listCalls" class="container-fluid black-div underTopDiv">
         <div class="container-fluid mb-3 mt-2 pb-1 knowMore">
                 <h1>Liste des cryptos</h1>
         </div>
-        <div class="row">';
+        <div class="row justify-content-around pb-1">
+            <ul class="pagination"></ul>
+        </div>
+        <div class="row list">';
 
 if(isset($_GET['search'])) {
     $search = htmlspecialchars($_GET['search']);

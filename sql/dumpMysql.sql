@@ -10,13 +10,13 @@ create table IF NOT EXISTS cry_users
 (
 	usr_id int(12) unsigned auto_increment
 		primary key,
-	usr_name varchar(255) not null,
-	usr_password varchar(255) not null,
+	usr_name varchar(191) not null,
+	usr_password varchar(191) not null,
 	usr_totalCallNumber int null,
 	usr_SuccessCall int null,
-	usr_BTCAdress varchar(255) null,
-	usr_ETHAdress varchar(255) null,
-	usr_LTCAdress varchar(255) null,
+	usr_BTCAdress varchar(191) null,
+	usr_ETHAdress varchar(191) null,
+	usr_LTCAdress varchar(191) null,
 	constraint cry_users_usr_name_uindex
 	unique (usr_name),
 	constraint cry_users_usr_BTCAdress_uindex
@@ -33,16 +33,16 @@ create table IF NOT EXISTS cryptos
 	cry_id int(10) unsigned auto_increment
 		primary key,
 	cry_url varchar(1000) not null,
-	cry_name varchar(255) not null,
-	cry_fullName varchar(255) null,
-	cry_last7Days varchar(255) null,
-	cry_last24Hours varchar(255) null,
-	cry_lastHour varchar(255) null,
-	cry_volume varchar(255) null,
-	cry_supply varchar(255) null,
-	cry_fiatValue varchar(255) null,
-	cry_btcValue varchar(255) null,
-	cry_marketcap varchar(255) not null
+	cry_name varchar(191) not null,
+	cry_fullName varchar(191) null,
+	cry_last7Days varchar(191) null,
+	cry_last24Hours varchar(191) null,
+	cry_lastHour varchar(191) null,
+	cry_volume varchar(191) null,
+	cry_supply varchar(191) null,
+	cry_fiatValue varchar(191) null,
+	cry_btcValue varchar(191) null,
+	cry_marketcap varchar(191) not null
 )
 ;
 
@@ -52,11 +52,11 @@ create table IF NOT EXISTS topCall
 		primary key,
 	usr_id int(10) unsigned not null,
 	cry_id int(10) unsigned not null,
-	top_time varchar(255) null,
-	top_startPrice varchar(255) not null,
-	top_status varchar(255) null,
-	top_target varchar(255) not null,
-	top_startTime varchar(255) not null,
+	top_time varchar(191) null,
+	top_startPrice varchar(191) not null,
+	top_status varchar(191) null,
+	top_target varchar(191) not null,
+	top_startTime varchar(191) not null,
 	top_description text null,
 	constraint topCall_user_usr_id_fk
 	foreign key (usr_id) references cry_users (usr_id),

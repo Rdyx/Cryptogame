@@ -14,8 +14,8 @@ if(!isset($_SESSION['nick']) || $_SESSION['nick'] === 'Guest') {
                     <label for="nick">Pseudo</label>
                     <input class="form-control" type="text" name="nick" id="nick" required>
                     <label class="mt-2" for="pwd">Mot de passe</label>
-                    <input class="form-control" type="password" name="pwd" id="pwd" require
-                    <button class="btn btn-outline-success mt-3" type="submit">Se connecter</button>
+                    <input class="form-control" type="password" name="pwd" id="pwd" required>
+                    <button class="btn btn-outline-success mt-3" type="submit">S'enregistrer</button>
                 </form>
             </div>
         </div>
@@ -30,11 +30,11 @@ if(!isset($_SESSION['nick']) || $_SESSION['nick'] === 'Guest') {
         <div>
             <p class="mt-5">Comment êtes-vous arrivés ici ?!</p>
             <p class="mt-5">Vous allez être redirigé automatiquement dans 3 secondes.</p>
-            <p>Si rien ne se passe, <a href="/index.php">vous pouvez cliquer ici.</a></p>
+            <p>Si rien ne se passe, <a href="/web/index.php">vous pouvez cliquer ici.</a></p>
         </div>
     </div>
     <!-- Redirection automatique au bout de 3 secondes sur l'index -->
-    <meta http-equiv="refresh" content="3; URL=/index.php">
+    <meta http-equiv="refresh" content="3; URL=/web/index.php">
     <?php
 };
 

@@ -12,8 +12,6 @@ $sql = "SELECT * FROM topCall
 $result = $conn->query($sql);
 $row = $result->fetch_assoc();
 
-var_dump($row['usr_name'] . $callId);
-
 if($row['usr_name'] === $nick) {
     $callTimerValue = ['Minute', 'Heure', 'Semaine', 'Mois', 'Année', 'Décennie', 'Siècle', 'Millénaire', 'OVER 9000'];
     ?>

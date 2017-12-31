@@ -44,10 +44,15 @@ if($row['usr_totalCallNumber'] === null) {
             <meta http-equiv="refresh" content="3; URL=/index.php">';
     }
 } else {
+        if($row['usr_totalCallNumber'] == 0){
+            $score = 0;
+        } else {
+            $score = number_format(($row['usr_SuccessCall']*100)/$row['usr_totalCallNumber'], 2);
+        };
     $userIdClass = new UserId($row['usr_name'],
         $row['usr_totalCallNumber'],
         $row['usr_SuccessCall'],
-        number_format(($row['usr_SuccessCall']*100)/$row['usr_totalCallNumber'], 2),
+        $score,
         $row['usr_BTCAdress'],
         $row['usr_ETHAdress'],
         $row['usr_LTCAdress']);

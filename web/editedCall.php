@@ -4,7 +4,7 @@ require('layout/top.php');
 $callId = $_GET['callId'];
 date_default_timezone_set('Europe/Paris');
 setlocale(LC_ALL, 'fr_FR');
-$date = strftime("%H:%M %e %B %Y");
+$date = strftime("%H:%M").' le '.strftime("%e/%m/%Y");
 
 $sql = "SELECT usr_name, top_startPrice FROM topCall
         JOIN cry_users ON topCall.usr_id = cry_users.usr_id
@@ -47,40 +47,44 @@ if($userName === $nick) {
             if ($timerNumber < 15) {
                 echo erreur('La durée du call est trop courte ! 15 Minutes minimum !', 'Oups !', '/web/edit.php/?callId=' . $callId);
             } else {
-                $callStopDate = strftime("%H:%M %e %B %Y", strtotime('+' . $timerNumber . ' minute'));
+                $callStopDate = strftime("%H:%M", strtotime('+' . $timerNumber . ' minute')).' le '.strftime("%e/%m/%Y");
                 pushCall($conn, $callId, $nick, $callStopDate, $targetPrice, $description);
                 echo erreur('Call modifié avec succès !', 'Call modifié !', '/index.php');
             };
         } elseif ($timerValue === 'Heure') {
-            $callStopDate = strftime("%H:%M %e %B %Y", strtotime('+' . $timerNumber . ' hour'));
+            $callStopDate = strftime("%H:%M", strtotime('+' . $timerNumber . ' hour')).' le '.strftime("%e/%m/%Y");
             pushCall($conn, $callId, $nick, $callStopDate, $targetPrice, $description);
             echo erreur('Call modifié avec succès !', 'Call modifié !', '/index.php');
         } elseif ($timerValue === 'Jour') {
-            $callStopDate = strftime("%H:%M %e %B %Y", strtotime('+' . $timerNumber . ' day'));
+            $callStopDate = strftime("%H:%M").' le '.strftime("%e/%m/%Y", strtotime('+' . $timerNumber . ' day'));
             pushCall($conn, $callId, $nick, $callStopDate, $targetPrice, $description);
             echo erreur('Call modifié avec succès !', 'Call modifié !', '/index.php');
         } elseif ($timerValue === 'Semaine') {
-            $callStopDate = strftime("%H:%M %e %B %Y", strtotime('+' . $timerNumber . ' week'));
+            $callStopDate = strftime("%H:%M").' le '.strftime("%e/%m/%Y", strtotime('+' . $timerNumber . ' week'));
+            pushCall($conn, $callId, $nick, $callStopDate, $targetPrice, $description);
+            echo erreur('Call modifié avec succès !', 'Call modifié !', '/index.php');
+        } elseif ($timerValue === 'Mois') {
+            $callStopDate = strftime("%H:%M").' le '.strftime("%e/%m/%Y", strtotime('+' . $timerNumber . ' month'));
             pushCall($conn, $callId, $nick, $callStopDate, $targetPrice, $description);
             echo erreur('Call modifié avec succès !', 'Call modifié !', '/index.php');
         } elseif ($timerValue === 'Année') {
-            $callStopDate = strftime("%H:%M %e %B %Y", strtotime('+' . $timerNumber . ' year'));
+            $callStopDate = strftime("%H:%M").' le '.strftime("%e/%m/%Y", strtotime('+' . $timerNumber . ' year'));
             pushCall($conn, $callId, $nick, $callStopDate, $targetPrice, $description);
             echo erreur('Call modifié avec succès !', 'Call modifié !', '/index.php');
         } elseif ($timerValue === 'Décennie') {
-            $callStopDate = strftime("%H:%M %e %B %Y", strtotime('+' . ($timerNumber * 10) . ' year'));
+            $callStopDate = strftime("%H:%M").' le '.strftime("%e/%m/%Y", strtotime('+' . ($timerNumber * 10) . ' year'));
             pushCall($conn, $callId, $nick, $callStopDate, $targetPrice, $description);
             echo erreur('Call modifié avec succès !', 'Call modifié !', '/index.php');
         } elseif ($timerValue === 'Siècle') {
-            $callStopDate = strftime("%H:%M %e %B %Y", strtotime('+' . ($timerNumber * 100) . ' year'));
+            $callStopDate = strftime("%H:%M").' le '.strftime("%e/%m/%Y", strtotime('+' . ($timerNumber * 100) . ' year'));
             pushCall($conn, $callId, $nick, $callStopDate, $targetPrice, $description);
             echo erreur('Call modifié avec succès !', 'Call modifié !', '/index.php');
         } elseif ($timerValue === 'Millénaire') {
-            $callStopDate = strftime("%H:%M %e %B %Y", strtotime('+' . ($timerNumber * 1000) . ' year'));
+            $callStopDate = strftime("%H:%M").' le '.strftime("%e/%m/%Y", strtotime('+' . ($timerNumber * 1000) . ' year'));
             pushCall($conn, $callId, $nick, $callStopDate, $targetPrice, $description);
             echo erreur('Call modifié avec succès !', 'Call modifié !', '/index.php');
         } elseif ($timerValue === 'OVER 9000') {
-            $callStopDate = strftime("%H:%M %e %B %Y", strtotime('+' . ($timerNumber * 10000) . ' year'));
+            $callStopDate = strftime("%H:%M").' le '.strftime("%e/%m/%Y", strtotime('+' . ($timerNumber * 10000) . ' year'));
             pushCall($conn, $callId, $nick, $callStopDate, $targetPrice, $description);
             echo erreur('Call modifié avec succès !', 'Call modifié !', '/index.php');
         } else {

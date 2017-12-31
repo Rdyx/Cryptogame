@@ -1,7 +1,7 @@
 <?php
-require('layout/dbconnect.php');
-require('layout/topIndex.php');
-require('Class/Call.php');
+require('web/layout/dbconnect.php');
+require('web/layout/topIndex.php');
+require('web/Class/Call.php');
 
 echo '<div id="topCalls" class="container-fluid black-div hidden">
         <div class="container-fluid knowMore mb-3 mt-1 pb-1"><h1>Top Calls du moment</h1></div>
@@ -56,5 +56,5 @@ while ($row = $result->fetch_assoc()) {
     echo $call->getHtml();
 };
 
-require('layout/bottom.html');
+require('web/layout/bottom.html');
 ?>

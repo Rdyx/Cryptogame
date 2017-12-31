@@ -64,7 +64,7 @@ if(!isset($_SESSION['nick']) || $_SESSION['nick'] === 'Guest') {
     <link rel="stylesheet" href="/node_modules/bootstrap/dist/css/bootstrap.css">
     <link rel="stylesheet" href="/font-awesome-4.7.0/css/font-awesome.css">
     <link rel="stylesheet" href="/css/style.css">
-    <title>Document</title>
+    <title>El Famoso CRYPTOGAME</title>
 </head>
 <body class="text-center">
 <div class="container-fluid fixed-top hidden-md-down">

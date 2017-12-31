@@ -10,13 +10,18 @@ $sql = "SELECT * FROM topCall
                 WHERE top_id = $callId";
 $result = $conn->query($sql);
 while ($row = $result->fetch_assoc()) {
+    if($row['usr_totalCallNumber'] == 0){
+        $score = 0;
+    } else {
+        $score = number_format(($row['usr_SuccessCall']*100)/$row['usr_totalCallNumber'], 2);
+    };
     $callIdClass = new CallId($row['usr_name'],
         $row['cry_name'],
         $row['cry_url'],
         $row['top_time'],
         $row['top_startPrice'],
         $row['top_status'],
-        number_format(($row['usr_totalCallNumber']*100)/$row['usr_SuccessCall'], 2),
+        $score,
         $row['top_startTime'],
         $row['top_target'],
         $row['cry_lastHour'],
