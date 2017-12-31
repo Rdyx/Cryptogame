@@ -1,10 +1,10 @@
 <?php
 session_start();
 
-$servername = "localhost";
-$username = "root";
-$password = "admin";
-$dbname = "cryptogame";
+$servername = "mysql-cryptogame.alwaysdata.net";
+$username = "150019";
+$password = "topkek";
+$dbname = "cryptogame_cryptogame";
 $i = 0;
 
 $conn = new mysqli($servername, $username, $password, $dbname);

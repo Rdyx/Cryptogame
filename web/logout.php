@@ -10,11 +10,11 @@ session_destroy();
         </div>
         <div>
             <p class="mt-5">Vous allez être redirigé automatiquement dans 3 secondes.</p>
-            <p>Si rien ne se passe, <a href="/web/index.php">vous pouvez cliquer ici.</a></p>
+            <p>Si rien ne se passe, <a href="/index.php">vous pouvez cliquer ici.</a></p>
         </div>
     </div>
     <!-- Redirection automatique au bout de 3 secondes sur l\'index -->
-    <meta http-equiv="refresh" content="3; URL=/web/index.php">
+    <meta http-equiv="refresh" content="3; URL=/index.php">
 <?php
 require('layout/bottom.html');
 ?>

@@ -422,10 +422,6 @@ class CallId
                 </tr>
                 <tr>
                     <th class="text-center">Volume</th>
-                    <td>'.$this->getVolume().'</td>
-                </tr>
-            </table>
-            <div class="knowMore"><a href="/web/index.php">Retourner à l\'accueil </a ></div >
-        </div >';
+                    <td>'.$this->getVolume(). ';
     }
 }

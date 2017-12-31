@@ -7,7 +7,7 @@ i = 0
 
 import sys
 import mysql.connector
-con = mysql.connector.connect(user='root',password='admin',host='localhost', port='8081',database='cryptogame')
+con = mysql.connector.connect(user='150019',password='topkek',host='mysql-cryptogame.alwaysdata.net', port='3306',database='cryptogame_cryptogame')
 cur = con.cursor(buffered=True)
 
 def existsOrNot(arg1):

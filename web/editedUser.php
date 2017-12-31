@@ -51,7 +51,7 @@ if(isset($oldPwd) && $oldPwd !== ''){
             $hashedNewPwd = password_hash($newPwd, PASSWORD_DEFAULT);
             $sql = "UPDATE cry_users SET usr_password = '$hashedNewPwd' WHERE usr_name = '$nick'";
             $conn->query($sql);
-            echo erreur('Données mises à jour !', 'Ok !', '/web/index.php/');
+            echo erreur('Données mises à jour !', 'Ok !', '/index.php/');
         } else {
             echo erreur('Votre nouveau mot de passe n\'est pas identique dans les deux champs !', 'Oups !', '/web/editUser.php/');
         }
@@ -59,7 +59,7 @@ if(isset($oldPwd) && $oldPwd !== ''){
         echo erreur('Votre ancien mot de passe n\'est pas bon !', 'Oups !', '/web/editUser.php/');
     }
 } else {
-    echo erreur('Données mises à jour !', 'Ok !', '/web/index.php/');
+    echo erreur('Données mises à jour !', 'Ok !', '/index.php/');
 }
 
 require ('layout/bottom.html');

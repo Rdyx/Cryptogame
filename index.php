@@ -56,5 +56,5 @@ while ($row = $result->fetch_assoc()) {
     echo $call->getHtml();
 };
 
-require ('layout/bottom.html');
+require('layout/bottom.html');
 ?>

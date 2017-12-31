@@ -53,40 +53,40 @@ if(floatval($targetPrice) > floatval($startPrice) || floatval($targetPrice) === 
         } else {
             $callStopDate = strftime("%H:%M %e %B %Y", strtotime('+' . $timerNumber . ' minute'));
             pushCall($conn, $usrId, $crypto, $callStopDate, $startPrice, 'En cours', $targetPrice, $date, $description);
-            echo erreur('Call ajouté avec succès !', 'Call créé !', '/web/index.php');
+            echo erreur('Call ajouté avec succès !', 'Call créé !', '/index.php');
         };
     } elseif ($timerValue === 'Heure') {
         $callStopDate = strftime("%H:%M %e %B %Y", strtotime('+' . $timerNumber . ' hour'));
         pushCall($conn, $usrId, $crypto, $callStopDate, $startPrice, 'En cours', $targetPrice, $date, $description);
-        echo erreur('Call ajouté avec succès !', 'Call créé !', '/web/index.php');
+        echo erreur('Call ajouté avec succès !', 'Call créé !', '/index.php');
     } elseif ($timerValue === 'Jour') {
         $callStopDate = strftime("%H:%M %e %B %Y", strtotime('+' . $timerNumber . ' day'));
         pushCall($conn, $usrId, $crypto, $callStopDate, $startPrice, 'En cours', $targetPrice, $date, $description);
-        echo erreur('Call ajouté avec succès !', 'Call créé !', '/web/index.php');
+        echo erreur('Call ajouté avec succès !', 'Call créé !', '/index.php');
     } elseif ($timerValue === 'Semaine') {
         $callStopDate = strftime("%H:%M %e %B %Y", strtotime('+' . $timerNumber . ' week'));
         pushCall($conn, $usrId, $crypto, $callStopDate, $startPrice, 'En cours', $targetPrice, $date, $description);
-        echo erreur('Call ajouté avec succès !', 'Call créé !', '/web/index.php');
+        echo erreur('Call ajouté avec succès !', 'Call créé !', '/index.php');
     } elseif ($timerValue === 'Année') {
         $callStopDate = strftime("%H:%M %e %B %Y", strtotime('+' . $timerNumber . ' year'));
         pushCall($conn, $usrId, $crypto, $callStopDate, $startPrice, 'En cours', $targetPrice, $date, $description);
-        echo erreur('Call ajouté avec succès !', 'Call créé !', '/web/index.php');
+        echo erreur('Call ajouté avec succès !', 'Call créé !', '/index.php');
     } elseif ($timerValue === 'Décennie') {
         $callStopDate = strftime("%H:%M %e %B %Y", strtotime('+' . ($timerNumber * 10) . ' year'));
         pushCall($conn, $usrId, $crypto, $callStopDate, $startPrice, 'En cours', $targetPrice, $date, $description);
-        echo erreur('Call ajouté avec succès !', 'Call créé !', '/web/index.php');
+        echo erreur('Call ajouté avec succès !', 'Call créé !', '/index.php');
     } elseif ($timerValue === 'Siècle') {
         $callStopDate = strftime("%H:%M %e %B %Y", strtotime('+' . ($timerNumber * 100) . ' year'));
         pushCall($conn, $usrId, $crypto, $callStopDate, $startPrice, 'En cours', $targetPrice, $date, $description);
-        echo erreur('Call ajouté avec succès !', 'Call créé !', '/web/index.php');
+        echo erreur('Call ajouté avec succès !', 'Call créé !', '/index.php');
     } elseif ($timerValue === 'Millénaire') {
         $callStopDate = strftime("%H:%M %e %B %Y", strtotime('+' . ($timerNumber * 1000) . ' year'));
         pushCall($conn, $usrId, $crypto, $callStopDate, $startPrice, 'En cours', $targetPrice, $date, $description);
-        echo erreur('Call ajouté avec succès !', 'Call créé !', '/web/index.php');
+        echo erreur('Call ajouté avec succès !', 'Call créé !', '/index.php');
     } elseif ($timerValue === 'OVER 9000') {
         $callStopDate = strftime("%H:%M %e %B %Y", strtotime('+' . ($timerNumber * 10000) . ' year'));
         pushCall($conn, $usrId, $crypto, $callStopDate, $startPrice, 'En cours', $targetPrice, $date, $description);
-        echo erreur('Call ajouté avec succès !', 'Call créé !', '/web/index.php');
+        echo erreur('Call ajouté avec succès !', 'Call créé !', '/index.php');
     } else {
         echo erreur('Tu n\'as pas bien suivi le formulaire coquinou ! Recommence !', 'Oups !', '/web/createCall.php');
     }

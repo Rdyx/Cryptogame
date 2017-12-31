@@ -72,14 +72,14 @@ if(!isset($_SESSION['nick']) || $_SESSION['nick'] === 'Guest') {
 <body class="text-center">
 <div class="container-fluid fixed-top hidden-md-down">
     <div class="row">
-        <div class="col mt-3 pl-0 text-left"><h3><a href="/web/index.php">Cryptogame Calls</a></h3></div>
+        <div class="col mt-3 pl-0 text-left"><h3><a href="/index.php">Cryptogame Calls</a></h3></div>
         <?= $boutons ?>
     </div>
 </div>
 <!--PETIT SCREEN hiddensmup-->
 <div class="container-fluid fixed-top hidden-lg-up">
     <div class="row">
-        <div class="col mt-3 pl-0 text-left"><h3><a href="/web/index.php">Cryptogame Calls</a></h3></div>
+        <div class="col mt-3 pl-0 text-left"><h3><a href="/index.php">Cryptogame Calls</a></h3></div>
         <div class="row mt-3 pr-0 mr-0">
             <i id="dropdownMenuMobile" class="mt-2 fa fa-bars"></i>
         </div>
