@@ -1,5 +1,7 @@
-$(window).ready(function(){
-    // $('#topCalls').addClass('hidden');
+new List('listCalls', {
+    valueNames: ['table'],
+    page: 6,
+    pagination: false
 });
 
 $('.topCallsClickable').click(function(){

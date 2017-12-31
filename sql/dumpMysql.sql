@@ -1,4 +1,12 @@
-create table cry_users
+create table IF NOT EXISTS compteur
+(
+	com_visites int null
+)
+;
+
+INSERT INTO compteur (com_visites) VALUE (0);
+
+create table IF NOT EXISTS cry_users
 (
 	usr_id int(12) unsigned auto_increment
 		primary key,
@@ -20,13 +28,13 @@ create table cry_users
 )
 ;
 
-create table cryptos
+create table IF NOT EXISTS cryptos
 (
 	cry_id int(10) unsigned auto_increment
 		primary key,
 	cry_url varchar(1000) not null,
 	cry_name varchar(255) not null,
-	cry_fullName varchar(255) not null,
+	cry_fullName varchar(255) null,
 	cry_last7Days varchar(255) null,
 	cry_last24Hours varchar(255) null,
 	cry_lastHour varchar(255) null,
@@ -34,11 +42,11 @@ create table cryptos
 	cry_supply varchar(255) null,
 	cry_fiatValue varchar(255) null,
 	cry_btcValue varchar(255) null,
-	cry_marketcap varchar(255) null
+	cry_marketcap varchar(255) not null
 )
 ;
 
-create table topCall
+create table IF NOT EXISTS topCall
 (
 	top_id int(12) unsigned auto_increment
 		primary key,

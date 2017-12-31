@@ -32,7 +32,10 @@ echo '</div>
     </div>
     <div id="listCalls" class="container-fluid black-div">
         <div class="container-fluid knowMore mb-3 mt-1 pb-1"><h1>Liste des Calls</h1></div>
-        <div class="row">';
+        <div class="row justify-content-around pb-1">
+            <ul class="pagination"></ul>
+        </div>
+        <div class="row list">';
 
 $sql = "SELECT * FROM topCall
                 JOIN cry_users on topCall.usr_id = cry_users.usr_id
@@ -52,5 +55,6 @@ while ($row = $result->fetch_assoc()) {
     $call->setHtml();
     echo $call->getHtml();
 };
+
 require ('layout/bottom.html');
 ?>

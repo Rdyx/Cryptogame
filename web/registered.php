@@ -11,7 +11,8 @@ if(!isset($_SESSION['nick']) || $_SESSION['nick'] === 'Guest') {
     $row = $result->fetch_assoc();
 
     if ($row['usr_name'] === null) {
-        $sql = "INSERT INTO cry_users (usr_name, usr_password) VALUES ('$nickPost', '$pwdPost')";
+        $sql = "INSERT INTO cry_users (usr_name, usr_password, usr_totalCallNumber, usr_SuccessCall)
+                VALUES ('$nickPost', '$pwdPost', 0, 0)";
         $result = $conn->query($sql);
         ?>
         <div class="container-fluid black-div underTopDiv">
@@ -23,7 +24,7 @@ if(!isset($_SESSION['nick']) || $_SESSION['nick'] === 'Guest') {
                 <p>Si rien ne se passe, <a href="/web/index.php">vous pouvez cliquer ici.</a></p>
             </div>
         </div>
-         Redirection automatique au bout de 3 secondes sur l'index
+<!--         Redirection automatique au bout de 3 secondes sur l'index-->
                 <meta http-equiv="refresh" content="3; URL=/web/index.php">
         <?php $_SESSION['nick'] = $nickPost;
     } else {

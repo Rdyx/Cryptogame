@@ -47,7 +47,7 @@ if($row['usr_totalCallNumber'] === null) {
     $userIdClass = new UserId($row['usr_name'],
         $row['usr_totalCallNumber'],
         $row['usr_SuccessCall'],
-        number_format(($row['usr_totalCallNumber']*100)/$row['usr_SuccessCall'], 2),
+        number_format(($row['usr_SuccessCall']*100)/$row['usr_totalCallNumber'], 2),
         $row['usr_BTCAdress'],
         $row['usr_ETHAdress'],
         $row['usr_LTCAdress']);
@@ -55,8 +55,12 @@ if($row['usr_totalCallNumber'] === null) {
     $userIdClass->setHtml();
     echo $userIdClass->getHtml();
 
-    echo '<div class="row">
-        <div class="col-12 mb-2"><h1>Résumé des calls</h1></div>';
+    echo '<div id="listCalls" class="container-fluid">
+        <div class="col-12 mb-2"><h1>Résumé des calls</h1></div>
+        <div class="row justify-content-around pb-1">
+            <ul class="pagination"></ul>
+        </div>
+        <div class="row list">';
 
     $result = $conn->query($sql);
     while ($row = $result->fetch_assoc()) {

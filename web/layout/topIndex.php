@@ -1,8 +1,7 @@
 <?php
 if(!isset($_SESSION['nick']) || $_SESSION['nick'] === 'Guest') {
-    $_SESSION['nick'] = 'Guest';
     $boutons = '<div class="row mt-2 pr-0">
-                    <form class="row text-center" action="/web/cryptos.php/" method="GET">
+                    <form class="row text-center mt-1 topInput" action="/web/cryptos.php/" method="GET">
                         <input autocomplete="off" type="text" name="search" class="text-center btn btn-outline-success" id="searchCrypto" placeholder="BTC, XBY, ETH...">
                         <button class="mr-3 btn btn-outline-success">Rechercher</button>
                     </form>
@@ -29,7 +28,7 @@ if(!isset($_SESSION['nick']) || $_SESSION['nick'] === 'Guest') {
                     </div>';
 }  elseif($_SESSION['nick'] !== 'Guest'){
     $boutons = '<div class="row mt-2 pr-0">
-                    <form class="row text-center mt-1" action="/web/cryptos.php/" method="GET">
+                    <form class="row text-center mt-1 topInput" action="/web/cryptos.php/" method="GET">
                         <input autocomplete="off" type="text" name="search" class="text-center btn btn-outline-success" id="searchCrypto" placeholder="BTC, XBY, ETH...">
                         <button class="mr-3 btn btn-outline-success">Rechercher</button>
                     </form>
@@ -41,13 +40,14 @@ if(!isset($_SESSION['nick']) || $_SESSION['nick'] === 'Guest') {
                             <a class="hovered" href="/web/logout.php">Se déconnecter</a>
                         </li>
                     </ul>
+                    <a class="hovered" href="/web/createCall.php"><h4 class="mt-2 mr-3 pr-3 borderRightTopDiv ">Créer un Call</h4></a>
                     <a class="topCallsClickable hovered" href="#"><h4 class="mt-2 mr-3 pr-3 borderRightTopDiv ">Top Calls</h4></a>
                     <a class="listCallsClickable hovered" href="#"><h4 class="mt-2 pr-3">All Calls</h4></a>
                 </div>';
     $boutonsMobile = '<div id="dropMenuMobileIndex" class="mt-5 fixed-top hidden">
                         <a class="dropdown-item" href="/web/user.php/?userId='.$_SESSION['nick'].'">'.$_SESSION['nick'].'</a>
                         <a class="dropdown-item" href="/web/logout.php">Se déconnecter</a>
-                        <a class="topCallsClickable dropdown-item" href="#">Top Calls</a>
+                        <a class="dropdown-item" href="/web/createCall.php">Créer un Call</a>
                         <a class="listCallsClickable dropdown-item" href="#">All Calls</a>
                         <form class="dropdown-item" action="/web/cryptos.php/" method="GET">
                             <input autocomplete="off" type="text" name="search" class="text-center btn btn-outline-success" id="searchCrypto" placeholder="BTC, XBY, ETH...">
@@ -77,7 +77,7 @@ if(!isset($_SESSION['nick']) || $_SESSION['nick'] === 'Guest') {
     </div>
 </div>
 <!--PETIT SCREEN hiddensmup-->
-<div class="container-fluid fixed-top hidden-md-up">
+<div class="container-fluid fixed-top hidden-lg-up">
     <div class="row">
         <div class="col mt-3 pl-0 text-left"><h3><a href="/web/index.php">Cryptogame Calls</a></h3></div>
         <div class="row mt-3 pr-0 mr-0">

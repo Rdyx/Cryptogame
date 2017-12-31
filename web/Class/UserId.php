@@ -150,7 +150,7 @@ class UserId
     {
         if($_SESSION['nick'] === $this->getName()){
             $editAndSuppr = '<tr>
-                                <td colspan="2"><a class="col" href="/web/editUser.php/?callId='.$this->getName().'">Editer votre profil</a></td>
+                                <td colspan="2"><a class="col" href="/web/editUser.php/">Editer votre profil</a></td>
                              </tr>';
         } else {
             $editAndSuppr = '';

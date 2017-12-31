@@ -67,6 +67,10 @@ if(floatval($targetPrice) > floatval($startPrice) || floatval($targetPrice) === 
         $callStopDate = strftime("%H:%M %e %B %Y", strtotime('+' . $timerNumber . ' week'));
         pushCall($conn, $usrId, $crypto, $callStopDate, $startPrice, 'En cours', $targetPrice, $date, $description);
         echo erreur('Call ajouté avec succès !', 'Call créé !', '/web/index.php');
+    } elseif ($timerValue === 'Année') {
+        $callStopDate = strftime("%H:%M %e %B %Y", strtotime('+' . $timerNumber . ' year'));
+        pushCall($conn, $usrId, $crypto, $callStopDate, $startPrice, 'En cours', $targetPrice, $date, $description);
+        echo erreur('Call ajouté avec succès !', 'Call créé !', '/web/index.php');
     } elseif ($timerValue === 'Décennie') {
         $callStopDate = strftime("%H:%M %e %B %Y", strtotime('+' . ($timerNumber * 10) . ' year'));
         pushCall($conn, $usrId, $crypto, $callStopDate, $startPrice, 'En cours', $targetPrice, $date, $description);

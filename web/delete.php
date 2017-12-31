@@ -5,16 +5,21 @@ $callId = htmlspecialchars($_GET['callId']);
 
 if(isset($_SESSION['nick']) || $_SESSION['nick'] !== 'Guest') {
     $nick = htmlspecialchars($_SESSION['nick']);
-    $sql = "SELECT usr_name FROM topCall
+    $sql = "SELECT usr_name, usr_totalCallNumber FROM topCall
             JOIN cry_users on topCall.usr_id = cry_users.usr_id
             WHERE usr_name LIKE '$nick'";
     $result = $conn->query($sql);
     $row = $result->fetch_row();
 
+    $number = $row[1];
+    var_dump($number);
     if ($row[0] === $nick) {
         $sql = "DELETE FROM topCall
             WHERE top_id = $callId";
-        $result = $conn->query($sql);
+        $conn->query($sql);
+
+        $sql = "UPDATE cry_users SET usr_totalCallNumber = usr_totalCallNumber+1 WHERE usr_name = '$nick'";
+        $conn->query($sql);
         ?>
         <div class="container-fluid black-div underTopDiv">
             <div class="container-fluid mb-3 mt-2 pb-1 knowMore">

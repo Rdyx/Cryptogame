@@ -356,7 +356,7 @@ class CallId
             $description = '';
         }
 
-        $this->html = '<div id="topCalls" class="container-fluid black-div underTopDiv">
+        $this->html = '<div class="container-fluid black-div underTopDiv">
     <div class="container-fluid knowMore mb-3 mt-2 pb-1"><h1>Call de '.$this->getCaller().'</h1></div>
         <div class="container col border justify-content-around">
             <table class="table text-center">

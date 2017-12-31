@@ -1,6 +1,10 @@
 <?php
 require('layout/dbconnect.php');
 require('layout/top.php');
+
+$sql = "SELECT usr_BTCAdress, usr_ETHAdress, usr_LTCAdress FROM cry_users WHERE usr_name = '$nick'";
+$result = $conn->query($sql);
+$row = $result->fetch_assoc();
 ?>
 
     <div class="container-fluid black-div underTopDiv">
@@ -42,7 +46,12 @@ require('layout/top.php');
                             <label for="BTCAdress" class="col-form-label">Adresse BTC</label>
                         </td>
                         <td class="align-middle">
-                            <input class="text-center form-control" type="text" id="BTCAdress" name="BTCAdress" placeholder="Adresse BTC (optionnel)">
+                            <input class="text-center form-control" type="text" id="BTCAdress" name="BTCAdress" placeholder="Adresse BTC (optionnel)"
+                                <?php
+                                if(isset($row['usr_BTCAdress'])){
+                                    echo 'value="'.$row['usr_BTCAdress'].'"';
+                                };
+                                ?>>
                         </td>
                     </tr>
                     <tr>
@@ -50,7 +59,12 @@ require('layout/top.php');
                             <label for="ETHAdress" class="col-form-label">Adresse ETH</label>
                         </td>
                         <td class="align-middle">
-                            <input class="text-center form-control" type="text" id="ETHAdress" name="ETHAdress" placeholder="Adresse ETH (optionnel)">
+                            <input class="text-center form-control" type="text" id="ETHAdress" name="ETHAdress" placeholder="Adresse ETH (optionnel)"
+                                <?php
+                                if(isset($row['usr_ETHAdress'])){
+                                echo 'value="'.$row['usr_ETHAdress'].'"';
+                                };
+                                ?>>
                         </td>
                     </tr>
                     <tr>
@@ -58,7 +72,12 @@ require('layout/top.php');
                             <label for="LTCAdress" class="col-form-label">Adresse LTC</label>
                         </td>
                         <td class="align-middle">
-                            <input class="text-center form-control" type="text" id="LTCAdress" name="LTCAdress" placeholder="Adresse LTC (optionnel)">
+                            <input class="text-center form-control" type="text" id="LTCAdress" name="LTCAdress" placeholder="Adresse LTC (optionnel)"
+                                <?php
+                                if(isset($row['usr_LTCAdress'])){
+                                    echo 'value="'.$row['usr_BTCAdress'].'"';
+                                };
+                                ?>>
                         </td>
                     </tr>
                 </table>

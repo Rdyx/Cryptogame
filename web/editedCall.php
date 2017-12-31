@@ -63,6 +63,10 @@ if($userName === $nick) {
             $callStopDate = strftime("%H:%M %e %B %Y", strtotime('+' . $timerNumber . ' week'));
             pushCall($conn, $callId, $nick, $callStopDate, $targetPrice, $description);
             echo erreur('Call modifié avec succès !', 'Call modifié !', '/web/index.php');
+        } elseif ($timerValue === 'Année') {
+            $callStopDate = strftime("%H:%M %e %B %Y", strtotime('+' . $timerNumber . ' year'));
+            pushCall($conn, $callId, $nick, $callStopDate, $targetPrice, $description);
+            echo erreur('Call modifié avec succès !', 'Call modifié !', '/web/index.php');
         } elseif ($timerValue === 'Décennie') {
             $callStopDate = strftime("%H:%M %e %B %Y", strtotime('+' . ($timerNumber * 10) . ' year'));
             pushCall($conn, $callId, $nick, $callStopDate, $targetPrice, $description);
