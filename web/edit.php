@@ -91,5 +91,5 @@ if($row['usr_name'] === $nick) {
     <meta http-equiv="refresh" content="3; URL=/index.php">
     <?php
 }
-require('layout/bottom.html');
+require('layout/bottom.php');
 ?>

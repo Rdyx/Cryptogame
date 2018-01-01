@@ -87,5 +87,5 @@ $row = $result->fetch_assoc();
     </div>
 
 <?php
-require('layout/bottom.html');
+require('layout/bottom.php');
 ?>

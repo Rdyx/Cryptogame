@@ -6,7 +6,6 @@ require('web/Class/Call.php');
 echo '<div id="topCalls" class="container-fluid black-div hidden">
         <div class="container-fluid knowMore mb-3 mt-1 pb-1"><h1>Top Calls du moment</h1></div>
         <div class="row">';
-
 $sql = 'SELECT * FROM topCall
         JOIN cry_users on topCall.usr_id = cry_users.usr_id
         JOIN cryptos on topCall.cry_id = cryptos.cry_id
@@ -56,5 +55,5 @@ while ($row = $result->fetch_assoc()) {
     echo $call->getHtml();
 };
 
-require('web/layout/bottom.html');
+require('web/layout/bottom.php');
 ?>

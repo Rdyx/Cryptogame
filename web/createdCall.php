@@ -4,7 +4,9 @@ require('layout/top.php');
 
 date_default_timezone_set('Europe/Paris');
 setlocale(LC_ALL, 'fr_FR');
-$date = strftime("%H:%M").' le '.strftime("%e/%m/%Y");
+$date = strftime("%H:%M").' le '.strftime("%d/%m/%Y");
+$endDate = strftime("%Y%m%d%H%M");
+
 $nick = $_SESSION['nick'];
 $sql = "SELECT usr_id FROM cry_users WHERE usr_name = '$nick'";
 $result = $conn->query($sql);
@@ -51,45 +53,85 @@ if(floatval($targetPrice) > floatval($startPrice) || floatval($targetPrice) === 
         if ($timerNumber < 15) {
             echo erreur('La durée du call est trop courte ! 15 Minutes minimum !', 'Oups !', '/web/createCall.php');
         } else {
-            $callStopDate = strftime("%H:%M", strtotime('+' . $timerNumber . ' minute')).' le '.strftime("%e/%m/%Y");
-            pushCall($conn, $usrId, $crypto, $callStopDate, $startPrice, 'En cours', $targetPrice, $date, $description);
+            $callStopDate = strftime("%H:%M", strtotime('+' . $timerNumber . ' minute')).' le '.strftime("%a/%m/%Y");
+                        $endDate = strftime("%Y%m%d%H%M", strtotime('+' . $timerNumber . ' minute'));
+
+
+
+            pushCall($conn, $usrId, $crypto, $callStopDate, $startPrice, 'En cours', $targetPrice, $date, $description, $endDate);
             echo erreur('Call ajouté avec succès !', 'Call ajouté !', '/index.php');
         };
     } elseif ($timerValue === 'Heure') {
-        $callStopDate = strftime("%H:%M", strtotime('+' . $timerNumber . ' hour')).' le '.strftime("%e/%m/%Y");
-        pushCall($conn, $usrId, $crypto, $callStopDate, $startPrice, 'En cours', $targetPrice, $date, $description);
+        $callStopDate = strftime("%H:%M", strtotime('+' . $timerNumber . ' hour')).' le '.strftime("%a/%m/%Y");
+                    $endDate = strftime("%Y%m%d%H%M", strtotime('+' . $timerNumber . ' hour'));
+
+
+
+        pushCall($conn, $usrId, $crypto, $callStopDate, $startPrice, 'En cours', $targetPrice, $date, $description, $endDate);
         echo erreur('Call ajouté avec succès !', 'Call ajouté !', '/index.php');
     } elseif ($timerValue === 'Jour') {
-        $callStopDate = strftime("%H:%M").' le '.strftime("%e/%m/%Y", strtotime('+' . $timerNumber . ' day'));
-        pushCall($conn, $usrId, $crypto, $callStopDate, $startPrice, 'En cours', $targetPrice, $date, $description);
+        $callStopDate = strftime("%H:%M").' le '.strftime("%a/%m/%Y", strtotime('+' . $timerNumber . ' day'));
+                    $endDate = strftime("%Y%m%d%H%M", strtotime('+' . $timerNumber . ' day'));
+
+
+
+        pushCall($conn, $usrId, $crypto, $callStopDate, $startPrice, 'En cours', $targetPrice, $date, $description, $endDate);
         echo erreur('Call ajouté avec succès !', 'Call ajouté !', '/index.php');
     } elseif ($timerValue === 'Semaine') {
-        $callStopDate = strftime("%H:%M").' le '.strftime("%e/%m/%Y", strtotime('+' . $timerNumber . ' week'));
-        pushCall($conn, $usrId, $crypto, $callStopDate, $startPrice, 'En cours', $targetPrice, $date, $description);
+        $callStopDate = strftime("%H:%M").' le '.strftime("%a/%m/%Y", strtotime('+' . $timerNumber . ' week'));
+                    $endDate = strftime("%Y%m%d%H%M", strtotime('+' . $timerNumber . ' week'));
+
+
+
+        pushCall($conn, $usrId, $crypto, $callStopDate, $startPrice, 'En cours', $targetPrice, $date, $description, $endDate);
         echo erreur('Call ajouté avec succès !', 'Call ajouté !', '/index.php');
     } elseif ($timerValue === 'Mois') {
-        $callStopDate = strftime("%H:%M").' le '.strftime("%e/%m/%Y", strtotime('+' . $timerNumber . ' month'));
-        pushCall($conn, $usrId, $crypto, $callStopDate, $startPrice, 'En cours', $targetPrice, $date, $description);
+        $callStopDate = strftime("%H:%M").' le '.strftime("%a/%m/%Y", strtotime('+' . $timerNumber . ' month'));
+                    $endDate = strftime("%Y%m%d%H%M", strtotime('+' . $timerNumber . ' month'));
+
+
+
+        pushCall($conn, $usrId, $crypto, $callStopDate, $startPrice, 'En cours', $targetPrice, $date, $description, $endDate);
         echo erreur('Call ajouté avec succès !', 'Call ajouté !', '/index.php');
     } elseif ($timerValue === 'Année') {
-        $callStopDate = strftime("%H:%M").' le '.strftime("%e/%m/%Y", strtotime('+' . $timerNumber . ' year'));
-        pushCall($conn, $usrId, $crypto, $callStopDate, $startPrice, 'En cours', $targetPrice, $date, $description);
+        $callStopDate = strftime("%H:%M").' le '.strftime("%a/%m/%Y", strtotime('+' . $timerNumber . ' year'));
+                    $endDate = strftime("%Y%m%d%H%M", strtotime('+' . $timerNumber . ' year'));
+
+
+
+        pushCall($conn, $usrId, $crypto, $callStopDate, $startPrice, 'En cours', $targetPrice, $date, $description, $endDate);
         echo erreur('Call ajouté avec succès !', 'Call ajouté !', '/index.php');
     } elseif ($timerValue === 'Décennie') {
-        $callStopDate = strftime("%H:%M").' le '.strftime("%e/%m/%Y", strtotime('+' . ($timerNumber * 10) . ' year'));
-        pushCall($conn, $usrId, $crypto, $callStopDate, $startPrice, 'En cours', $targetPrice, $date, $description);
+        $callStopDate = strftime("%H:%M").' le '.strftime("%a/%m/%Y", strtotime('+' . ($timerNumber * 10) . ' year'));
+                    $endDate = strftime("%Y%m%d%H%M", strtotime('+' . ($timerNumber * 10) . ' year'));
+
+
+
+        pushCall($conn, $usrId, $crypto, $callStopDate, $startPrice, 'En cours', $targetPrice, $date, $description, $endDate);
         echo erreur('Call ajouté avec succès !', 'Call ajouté !', '/index.php');
     } elseif ($timerValue === 'Siècle') {
-        $callStopDate = strftime("%H:%M").' le '.strftime("%e/%m/%Y", strtotime('+' . ($timerNumber * 100) . ' year'));
-        pushCall($conn, $usrId, $crypto, $callStopDate, $startPrice, 'En cours', $targetPrice, $date, $description);
+        $callStopDate = strftime("%H:%M").' le '.strftime("%a/%m/%Y", strtotime('+' . ($timerNumber * 100) . ' year'));
+                    $endDate = strftime("%Y%m%d%H%M", strtotime('+' . ($timerNumber * 100) . ' year'));
+
+
+
+        pushCall($conn, $usrId, $crypto, $callStopDate, $startPrice, 'En cours', $targetPrice, $date, $description, $endDate);
         echo erreur('Call ajouté avec succès !', 'Call ajouté !', '/index.php');
     } elseif ($timerValue === 'Millénaire') {
-        $callStopDate = strftime("%H:%M").' le '.strftime("%e/%m/%Y", strtotime('+' . ($timerNumber * 1000) . ' year'));
-        pushCall($conn, $usrId, $crypto, $callStopDate, $startPrice, 'En cours', $targetPrice, $date, $description);
+        $callStopDate = strftime("%H:%M").' le '.strftime("%a/%m/%Y", strtotime('+' . ($timerNumber * 1000) . ' year'));
+                    $endDate = strftime("%Y%m%d%H%M", strtotime('+' . ($timerNumber * 1000) . ' year'));
+
+
+
+        pushCall($conn, $usrId, $crypto, $callStopDate, $startPrice, 'En cours', $targetPrice, $date, $description, $endDate);
         echo erreur('Call ajouté avec succès !', 'Call ajouté !', '/index.php');
     } elseif ($timerValue === 'OVER 9000') {
-        $callStopDate = strftime("%H:%M").' le '.strftime("%e/%m/%Y", strtotime('+' . ($timerNumber * 10000) . ' year'));
-        pushCall($conn, $usrId, $crypto, $callStopDate, $startPrice, 'En cours', $targetPrice, $date, $description);
+        $callStopDate = strftime("%H:%M").' le '.strftime("%a/%m/%Y", strtotime('+' . ($timerNumber * 10000) . ' year'));
+                    $endDate = strftime("%Y%m%d%H%M", strtotime('+' . ($timerNumber * 10000) . ' year'));
+
+
+
+        pushCall($conn, $usrId, $crypto, $callStopDate, $startPrice, 'En cours', $targetPrice, $date, $description, $endDate);
         echo erreur('Call ajouté avec succès !', 'Call ajouté !', '/index.php');
     } else {
         echo erreur('Tu n\'as pas bien suivi le formulaire coquinou ! Recommence !', 'Oups !', '/web/createCall.php');
@@ -98,18 +140,18 @@ if(floatval($targetPrice) > floatval($startPrice) || floatval($targetPrice) === 
     echo erreur('La target est inférieure au prix actuel ! ('.$startPrice.' BTC)', 'Oups !', '/web/createCall.php');
 }
 
-function pushCall($conn, $usrId, $crypto, $callStopDate, $startPrice, $statut, $targetPrice, $date, $description){
+function pushCall($conn, $usrId, $crypto, $callStopDate, $startPrice, $statut, $targetPrice, $date, $description, $endDate){
     if($description === ''){
-        $sql = "INSERT INTO topCall (usr_id, cry_id, top_time, top_startPrice, top_status, top_target, top_startTime) 
-        VALUES ('$usrId', '$crypto', '$callStopDate', '$startPrice BTC', 'En cours', '$targetPrice BTC', '$date')";
+        $sql = "INSERT INTO topCall (usr_id, cry_id, top_time, top_startPrice, top_status, top_target, top_startTime, top_endDate) 
+        VALUES ('$usrId', '$crypto', '$callStopDate', '$startPrice BTC', 'En cours', '$targetPrice BTC', '$date', $endDate)";
         $conn->query($sql);
     } else {
-        $sql = "INSERT INTO topCall (usr_id, cry_id, top_time, top_startPrice, top_status, top_target, top_startTime, top_description) 
-        VALUES ('$usrId', '$crypto', '$callStopDate', '$startPrice BTC', 'En cours', '$targetPrice BTC', '$date', '$description')";
+        $sql = "INSERT INTO topCall (usr_id, cry_id, top_time, top_startPrice, top_status, top_target, top_startTime, top_description, top_endDate) 
+        VALUES ('$usrId', '$crypto', '$callStopDate', '$startPrice BTC', 'En cours', '$targetPrice BTC', '$date', '$description', $endDate)";
         $conn->query($sql);
     }
 };
 
-require('layout/bottom.html');
+require('layout/bottom.php');
 ?>
 

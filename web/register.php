@@ -38,5 +38,5 @@ if(!isset($_SESSION['nick']) || $_SESSION['nick'] === 'Guest') {
     <?php
 };
 
-require('layout/bottom.html');
+require('layout/bottom.php');
 ?>

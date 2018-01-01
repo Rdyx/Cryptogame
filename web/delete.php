@@ -51,5 +51,5 @@ if(isset($_SESSION['nick']) || $_SESSION['nick'] !== 'Guest') {
     };
 };
 
-require('layout/bottom.html');
+require('layout/bottom.php');
 ?>

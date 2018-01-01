@@ -16,5 +16,5 @@ session_destroy();
     <!-- Redirection automatique au bout de 3 secondes sur l\'index -->
     <meta http-equiv="refresh" content="3; URL=/index.php">
 <?php
-require('layout/bottom.html');
+require('layout/bottom.php');
 ?>

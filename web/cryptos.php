@@ -66,5 +66,5 @@ if(isset($_GET['search'])) {
 echo '</div>
      </div>';
 
-require('layout/bottom.html');
+require('layout/bottom.php');
 ?>

@@ -107,5 +107,5 @@ if(!isset($nick) || $nick === 'Guest'){
 
     <?php
 }
-require('layout/bottom.html');
+require('layout/bottom.php');
 ?>

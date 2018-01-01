@@ -1,14 +1,15 @@
 # python pushDB.py
 import json
 
-currencies = json.load(open("currencies.json"))
+currencies = json.load(open("/home/cryptogame/www/python/currencies.json"))
 
-i = 0
 
 import sys
 import mysql.connector
+import datetime
 con = mysql.connector.connect(user='150019',password='topkek',host='mysql-cryptogame.alwaysdata.net', port='3306',database='cryptogame_cryptogame')
 cur = con.cursor(buffered=True)
+i = 0
 
 def existsOrNot(arg1):
     test = cur.execute("SELECT cry_fullName FROM cryptos WHERE cry_fullName = %s", ("" + arg1 + "",))
@@ -82,6 +83,21 @@ try:
                 currencieBTCValue,
                 currencieMarketCap,
                 currencieName))
+        date = datetime.datetime.now()
+        minute = date.minute
+        hour = date.hour
+        day = date.day
+        month = date.month
+        if minute < 10:
+            minute = '0'+str(date.minute)
+        if hour < 10:
+            hour = '0'+str(date.month)
+        if day < 10:
+            day = '0'+str(date.day)
+        if month < 10:
+            month = '0'+str(date.month)
+        dateNow = str(hour) + ':' + str(minute) + ' ' + str(day) + '/' + str(month) + '/' + str(date.year)
+        cur.execute("UPDATE compteur SET last_update = '"+dateNow+"'")
         con.commit()
         i += 1
     print ("Database successfully updated")

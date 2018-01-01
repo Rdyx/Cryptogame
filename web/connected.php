@@ -62,5 +62,5 @@ $pwd = htmlspecialchars($row[1], ENT_QUOTES);
     <?php
 };
 
-require('layout/bottom.html');
+require('layout/bottom.php');
 ?>

@@ -1,5 +1,5 @@
 #scrapy runspider crawlerCMC.py -s FEED_EXPORT_ENCODING=utf-8 -o currencies.json
-f = open('currencies.json', 'w')
+f = open('/home/cryptogame/www/python/currencies.json', 'w')
 f.close()
 
 import scrapy

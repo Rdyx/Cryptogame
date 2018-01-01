@@ -62,5 +62,5 @@ if(isset($oldPwd) && $oldPwd !== ''){
     echo erreur('Données mises à jour !', 'Ok !', '/index.php/');
 }
 
-require ('layout/bottom.html');
+require('layout/bottom.php');
 ?>

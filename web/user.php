@@ -85,5 +85,5 @@ if($row['usr_totalCallNumber'] === null) {
     echo '</div>';
 }
 
-require('layout/bottom.html');
+require('layout/bottom.php');
 ?>

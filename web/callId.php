@@ -36,5 +36,5 @@ while ($row = $result->fetch_assoc()) {
     echo $callIdClass->getHtml();
 };
 
-require('layout/bottom.html');
+require('layout/bottom.php');
 ?>
