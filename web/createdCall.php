@@ -49,7 +49,7 @@ function erreur($arg1, $arg2, $arg3){
 if(floatval($targetPrice) > floatval($startPrice) || floatval($targetPrice) === '' || floatval($targetPrice) === null) {
     if ($timerValue === 'Minute') {
         if ($timerNumber < 15) {
-            echo erreur('La durée du call est trop courte ! 15 Minutes minimum !', 'Oups !', '/web/edit.php/?callId=' . $callId);
+            echo erreur('La durée du call est trop courte ! 15 Minutes minimum !', 'Oups !', '/web/createCall.php');
         } else {
             $callStopDate = strftime("%H:%M", strtotime('+' . $timerNumber . ' minute')).' le '.strftime("%e/%m/%Y");
             pushCall($conn, $usrId, $crypto, $callStopDate, $startPrice, 'En cours', $targetPrice, $date, $description);
@@ -92,7 +92,7 @@ if(floatval($targetPrice) > floatval($startPrice) || floatval($targetPrice) === 
         pushCall($conn, $usrId, $crypto, $callStopDate, $startPrice, 'En cours', $targetPrice, $date, $description);
         echo erreur('Call ajouté avec succès !', 'Call ajouté !', '/index.php');
     } else {
-        echo erreur('Tu n\'as pas bien suivi le formulaire coquinou ! Recommence !', 'Oups !', '/web/edit.php/?callId=' . $callId);
+        echo erreur('Tu n\'as pas bien suivi le formulaire coquinou ! Recommence !', 'Oups !', '/web/createCall.php');
     }
 } else {
     echo erreur('La target est inférieure au prix actuel ! ('.$startPrice.' BTC)', 'Oups !', '/web/createCall.php');

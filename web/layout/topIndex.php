@@ -2,7 +2,7 @@
 if(!isset($_SESSION['nick']) || $_SESSION['nick'] === 'Guest') {
     $boutons = '<div class="row mt-2 pr-0">
                     <form class="row text-center mt-1 topInput" action="/web/cryptos.php/" method="GET">
-                        <input autocomplete="off" type="text" name="search" class="text-center btn btn-outline-success" id="searchCrypto" placeholder="BTC, XBY, ETH...">
+                        <input autocomplete="off" type="text" name="search" class="text-center btn-outline-success searchCryptos" placeholder="BTC, XBY, ETH...">
                         <button class="mr-3 btn btn-outline-success">Rechercher</button>
                     </form>
                     <ul class="list-unstyled ml-3 mt-0 pt-0 mr-3 pr-3 borderRightTopDiv">
@@ -22,14 +22,14 @@ if(!isset($_SESSION['nick']) || $_SESSION['nick'] === 'Guest') {
                         <a class="topCallsClickable dropdown-item" href="#">Top Calls</a>
                         <a class="listCallsClickable dropdown-item" href="#">All Calls</a>
                         <form class="dropdown-item" action="/web/cryptos.php/" method="GET">
-                            <input autocomplete="off" type="text" name="search" class="text-center btn btn-outline-success" id="searchCrypto" placeholder="BTC, XBY, ETH...">
+                            <input autocomplete="off" type="text" name="search" class="text-center btn-outline-success searchCryptos" placeholder="BTC, XBY, ETH...">
                             <button class="mr-3 btn btn-outline-success">Rechercher</button>
                         </form>
                     </div>';
 }  elseif($_SESSION['nick'] !== 'Guest'){
     $boutons = '<div class="row mt-2 pr-0">
                     <form class="row text-center mt-1 topInput" action="/web/cryptos.php/" method="GET">
-                        <input autocomplete="off" type="text" name="search" class="text-center btn btn-outline-success" id="searchCrypto" placeholder="BTC, XBY, ETH...">
+                        <input autocomplete="off" type="text" name="search" class="text-center btn-outline-success searchCryptos" placeholder="BTC, XBY, ETH...">
                         <button class="mr-3 btn btn-outline-success">Rechercher</button>
                     </form>
                     <ul class="list-unstyled ml-3 mt-0 pt-0 mr-3 pr-3 borderRightTopDiv">
@@ -51,7 +51,7 @@ if(!isset($_SESSION['nick']) || $_SESSION['nick'] === 'Guest') {
                         <a class="topCallsClickable dropdown-item" href="#">Top Calls</a>
                         <a class="listCallsClickable dropdown-item" href="#">All Calls</a>
                         <form class="dropdown-item" action="/web/cryptos.php/" method="GET">
-                            <input autocomplete="off" type="text" name="search" class="text-center btn btn-outline-success" id="searchCrypto" placeholder="BTC, XBY, ETH...">
+                            <input autocomplete="off" type="text" name="search" class="text-center btn-outline-success searchCryptos" placeholder="BTC, XBY, ETH...">
                             <button class="mr-3 btn btn-outline-success">Rechercher</button>
                         </form>
                     </div>';

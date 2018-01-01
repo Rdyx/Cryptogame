@@ -3,9 +3,11 @@ body {
     margin: 0;
     margin-top: 5em;
     background-image: url('../img/maxresdefault.jpg');
+    background-position: center;
+    background-size: 100% 100%;
     background-attachment: fixed;
-    background-repeat: no-repeat;
     color: white;
+    min-height:100%;
 }
 
 div {
@@ -16,20 +18,26 @@ div {
     display: none;
 }
 
+.searchCryptos {
+    border: 1px solid #5CB85C;
+    border-radius: 5px;
+}
+
+.searchCryptos:hover {
+    background-color: #5CB85C;
+    color: black;
+}
+
 .borderRightTopDiv {
     border-right: 1px dashed dimgrey;
 }
 
 #dropMenuMobile {
-    height: 26%;
+    height: 25vh;
 }
 
 #dropMenuMobileIndex {
-    height: 31%;
-}
-
-.not-connected {
-    height: 21%;
+    height: 30vh;
 }
 
 .green {
