@@ -383,11 +383,11 @@ class CallId
                 </tr>
                 <tr>
                     <th class="text-center">Départ</th>
-                    <td>'.$this->getCallStart().'</td>
+                    <td>'.$this->getCallStart().' BTC</td>
                 </tr>
                 <tr>
                     <th class="text-center">Target</th>
-                    <td>'.$this->getCallTarget().'</td>
+                    <td>'.$this->getCallTarget().' BTC</td>
                 </tr>
                 <tr>
                     <th class="text-center">Statut</th>

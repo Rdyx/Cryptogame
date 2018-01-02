@@ -210,12 +210,12 @@ class Call
                                 <td>' . $this->getCallTime() . '</td>
                             </tr>
                             <tr>
-                                <th class="text-center">Départ</th>
-                                <td>' . $this->getCallStartPrice() . '</td>
+                                <th class="text-center">Prix de départ</th>
+                                <td>' . $this->getCallStartPrice() . ' BTC</td>
                             </tr>
                             <tr>
                                 <th class="text-center">Target</th>
-                                <td>' . $this->getCallTarget() . '</td>
+                                <td>' . $this->getCallTarget() . ' BTC</td>
                             </tr>
                             <tr>
                                 <th class="text-center">Statut</th>

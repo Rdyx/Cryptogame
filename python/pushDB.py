@@ -7,7 +7,7 @@ import sys
 import mysql.connector
 import datetime
 from datetime import date, timedelta
-con = mysql.connector.connect(user='*',password='*',host='*', port='*',database='*')
+con = mysql.connector.connect(user='*',password='*',host='mysql-cryptogame.alwaysdata.net', port='3306',database='cryptogame_cryptogame')
 cur = con.cursor(buffered=True)
 i = 0
 j = 0
@@ -104,11 +104,20 @@ try:
     cur.execute("UPDATE compteur SET last_update = '"+dateNow+"'")
 
     dateDBCompare = str(date.year)+str(month)+str(day)+str(hour)+str(minute)
-    cur.execute ("SELECT top_endDate, top_id FROM topCall")
-    getCallEndDate = cur.fetchall ()
+    cur.execute ("SELECT top_endDate, top_id FROM topCall WHERE top_status = 'En cours'")
+    getCallEndDate = cur.fetchall()
     while j < len(getCallEndDate):
         if int(getCallEndDate[j][0]) < int(dateDBCompare):
-            cur.execute ("UPDATE topCall SET top_status = 'Fini' WHERE top_id = '"+str(getCallEndDate[j][1])+"'")
+            cur.execute("SELECT top_target, cryptos.cry_btcValue FROM topCall JOIN cryptos on topCall.cry_id = cryptos.cry_id WHERE topCall.cry_id = cryptos.cry_id AND top_id = '"+str(getCallEndDate[j][1])+"'")
+            comparaisonTargetStart = cur.fetchall()
+            print('target ' + comparaisonTargetStart[0][0])
+            print('start ' +comparaisonTargetStart[0][1])
+            if float(comparaisonTargetStart[0][0]) < float(comparaisonTargetStart[0][1]):
+                print('only total')
+                cur.execute ("UPDATE topCall JOIN cry_users ON topCall.usr_id = cry_users.usr_id SET top_status = 'Fini', cry_users.usr_totalCallNumber = cry_users.usr_totalCallNumber+1 WHERE top_id = '"+str(getCallEndDate[j][1])+"' AND topCall.usr_id = cry_users.usr_id")
+            else:
+                print('total and success')
+                cur.execute ("UPDATE topCall JOIN cry_users ON topCall.usr_id = cry_users.usr_id SET top_status = 'Fini', cry_users.usr_totalCallNumber = cry_users.usr_totalCallNumber+1, cry_users.usr_SuccessCall = cry_users.usr_SuccessCall+1 WHERE top_id = '"+str(getCallEndDate[j][1])+"' AND topCall.usr_id = cry_users.usr_id")
         j += 1
     
     con.commit()

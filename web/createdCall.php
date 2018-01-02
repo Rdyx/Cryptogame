@@ -143,11 +143,11 @@ if(floatval($targetPrice) > floatval($startPrice) || floatval($targetPrice) === 
 function pushCall($conn, $usrId, $crypto, $callStopDate, $startPrice, $statut, $targetPrice, $date, $description, $endDate){
     if($description === ''){
         $sql = "INSERT INTO topCall (usr_id, cry_id, top_time, top_startPrice, top_status, top_target, top_startTime, top_endDate) 
-        VALUES ('$usrId', '$crypto', '$callStopDate', '$startPrice BTC', 'En cours', '$targetPrice BTC', '$date', $endDate)";
+        VALUES ('$usrId', '$crypto', '$callStopDate', '$startPrice', 'En cours', '$targetPrice', '$date', $endDate)";
         $conn->query($sql);
     } else {
         $sql = "INSERT INTO topCall (usr_id, cry_id, top_time, top_startPrice, top_status, top_target, top_startTime, top_description, top_endDate) 
-        VALUES ('$usrId', '$crypto', '$callStopDate', '$startPrice BTC', 'En cours', '$targetPrice BTC', '$date', '$description', $endDate)";
+        VALUES ('$usrId', '$crypto', '$callStopDate', '$startPrice', 'En cours', '$targetPrice', '$date', '$description', $endDate)";
         $conn->query($sql);
     }
 };

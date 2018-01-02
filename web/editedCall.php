@@ -110,10 +110,10 @@ if($userName === $nick) {
 
 function pushCall($conn, $callId, $nick, $callStopDate, $targetPrice, $description, $endDate){
     if($description === ''){
-        $sql = "UPDATE topCall INNER JOIN cry_users ON topCall.usr_id = cry_users.usr_id SET top_time = '$callStopDate', top_target = '$targetPrice BTC', top_endDate = '$endDate' WHERE top_id = $callId AND usr_name = '$nick'";
+        $sql = "UPDATE topCall INNER JOIN cry_users ON topCall.usr_id = cry_users.usr_id SET top_time = '$callStopDate', top_target = '$targetPrice', top_endDate = '$endDate' WHERE top_id = $callId AND usr_name = '$nick'";
         $conn->query($sql);
     } else {
-        $sql = "UPDATE topCall INNER JOIN cry_users ON topCall.usr_id = cry_users.usr_id SET top_time = '$callStopDate', top_target = '$targetPrice BTC', top_description = '$description', top_endDate = '$endDate' WHERE top_id = $callId AND usr_name = '$nick'";
+        $sql = "UPDATE topCall INNER JOIN cry_users ON topCall.usr_id = cry_users.usr_id SET top_time = '$callStopDate', top_target = '$targetPrice', top_description = '$description', top_endDate = '$endDate' WHERE top_id = $callId AND usr_name = '$nick'";
         $conn->query($sql);
     }
 };
