@@ -1,12 +1,11 @@
-create table IF NOT EXISTS compteur
+create table compteur
 (
-	com_visites int null
+	com_visites int null,
+	last_update varchar(191) null
 )
 ;
 
-INSERT INTO compteur (com_visites) VALUE (0);
-
-create table IF NOT EXISTS cry_users
+create table cry_users
 (
 	usr_id int(12) unsigned auto_increment
 		primary key,
@@ -28,7 +27,7 @@ create table IF NOT EXISTS cry_users
 )
 ;
 
-create table IF NOT EXISTS cryptos
+create table cryptos
 (
 	cry_id int(10) unsigned auto_increment
 		primary key,
@@ -46,7 +45,7 @@ create table IF NOT EXISTS cryptos
 )
 ;
 
-create table IF NOT EXISTS topCall
+create table topCall
 (
 	top_id int(12) unsigned auto_increment
 		primary key,
@@ -58,6 +57,7 @@ create table IF NOT EXISTS topCall
 	top_target varchar(191) not null,
 	top_startTime varchar(191) not null,
 	top_description text null,
+	top_endDate varchar(191) null,
 	constraint topCall_user_usr_id_fk
 	foreign key (usr_id) references cry_users (usr_id),
 	constraint topCall_cryptos_cry_id_fk
