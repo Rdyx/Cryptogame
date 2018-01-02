@@ -94,7 +94,7 @@ if($userName === $nick) {
             pushCall($conn, $callId, $nick, $callStopDate, $targetPrice, $description, $endDate);
             echo erreur('Call modifié avec succès !', 'Call modifié !', '/index.php');
         } elseif ($timerValue === 'OVER 9000') {
-            $callStopDate = strftime("%H:%M").' le '.strftime("%a/%m/%Y", strtotime('+' . ($timerNumber * 10000) . ' year'));
+            $callStopDate = strftime("%H:%M").' le '.strftime("%d/%m/%Y", strtotime('+' . ($timerNumber * 10000) . ' year'));
             $endDate = strftime("%Y%m%d%H%M", strtotime('+' . ($timerNumber * 10000) . ' year'));
             pushCall($conn, $callId, $nick, $callStopDate, $targetPrice, $description, $endDate);
             echo erreur('Call modifié avec succès !', 'Call modifié !', '/index.php');

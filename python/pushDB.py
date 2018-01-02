@@ -1,15 +1,17 @@
 # python pushDB.py
 import json
-
+# /home/cryptogame/www/python/
 currencies = json.load(open("/home/cryptogame/www/python/currencies.json"))
-
 
 import sys
 import mysql.connector
 import datetime
+from datetime import date, timedelta
 con = mysql.connector.connect(user='150019',password='topkek',host='mysql-cryptogame.alwaysdata.net', port='3306',database='cryptogame_cryptogame')
+# con = mysql.connector.connect(user='root',password='admin',host='localhost', port='8081',database='cryptogame')
 cur = con.cursor(buffered=True)
 i = 0
+j = 0
 
 def existsOrNot(arg1):
     test = cur.execute("SELECT cry_fullName FROM cryptos WHERE cry_fullName = %s", ("" + arg1 + "",))
@@ -83,23 +85,34 @@ try:
                 currencieBTCValue,
                 currencieMarketCap,
                 currencieName))
-        date = datetime.datetime.now()
-        minute = date.minute
-        hour = date.hour
-        day = date.day
-        month = date.month
-        if minute < 10:
-            minute = '0'+str(date.minute)
-        if hour < 10:
-            hour = '0'+str(date.month)
-        if day < 10:
-            day = '0'+str(date.day)
-        if month < 10:
-            month = '0'+str(date.month)
-        dateNow = str(hour) + ':' + str(minute) + ' ' + str(day) + '/' + str(month) + '/' + str(date.year)
-        cur.execute("UPDATE compteur SET last_update = '"+dateNow+"'")
-        con.commit()
         i += 1
+    
+    date = datetime.datetime.now()
+    minute = date.minute
+    hour = date.hour
+    day = date.day
+    month = date.month
+    if minute < 10:
+        minute = '0'+str(date.minute)
+    if hour < 10:
+        hour = '0'+str(date.hour)
+    if day < 10:
+        day = '0'+str(date.day)
+    if month < 10:
+        month = '0'+str(date.month)
+
+    dateNow = str(hour) + ':' + str(minute) + ' ' + str(day) + '/' + str(month) + '/' + str(date.year)
+    cur.execute("UPDATE compteur SET last_update = '"+dateNow+"'")
+
+    dateDBCompare = str(date.year)+str(month)+str(day)+str(hour)+str(minute)
+    cur.execute ("SELECT top_endDate, top_id FROM topCall")
+    getCallEndDate = cur.fetchall ()
+    while j < len(getCallEndDate):
+        if int(getCallEndDate[j][0]) < int(dateDBCompare):
+            cur.execute ("UPDATE topCall SET top_status = 'Fini' WHERE top_id = '"+str(getCallEndDate[j][1])+"'")
+        j += 1
+    
+    con.commit()
     print ("Database successfully updated")
 
 except:
