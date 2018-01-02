@@ -7,7 +7,7 @@ import sys
 import mysql.connector
 import datetime
 from datetime import date, timedelta
-con = mysql.connector.connect(user='150019',password='topkek',host='mysql-cryptogame.alwaysdata.net', port='3306',database='cryptogame_cryptogame')
+con = mysql.connector.connect(user='*',password='*',host='mysql-cryptogame.alwaysdata.net', port='3306',database='cryptogame_cryptogame')
 cur = con.cursor(buffered=True)
 i = 0
 j = 0
