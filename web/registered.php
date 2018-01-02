@@ -6,7 +6,7 @@ if(!isset($_SESSION['nick']) || $_SESSION['nick'] === 'Guest') {
     $nickPost = htmlspecialchars($_POST['nick'], ENT_QUOTES);
     $pwdPost = htmlspecialchars(password_hash($_POST['pwd'], PASSWORD_DEFAULT), ENT_QUOTES);
 
-    $sql = "SELECT usr_name FROM cry_users WHERE usr_name = '$nickPost'";
+    $sql = "SELECT usr_name FROM cry_users WHERE usr_name LIKE '$nickPost'";
     $result = $conn->query($sql);
     $row = $result->fetch_assoc();
 

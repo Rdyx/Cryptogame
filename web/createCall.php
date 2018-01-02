@@ -92,7 +92,7 @@ if(!isset($nick) || $nick === 'Guest'){
                     </tr>
                     <tr>
                         <td class="align-middle">
-                            <label for="description" class="col-form-label">Target</label>
+                            <label for="description" class="col-form-label">Commentaire</label>
                         </td>
                         <td class="align-middle">
                             <textarea class="text-center form-control" type="text" id="description" name="description"

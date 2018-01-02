@@ -6,7 +6,7 @@ if(!isset($_SESSION['nick']) || $_SESSION['nick'] === 'Guest') {
 $nickPost = htmlspecialchars($_POST['nick'], ENT_QUOTES);
 $pwdPost = htmlspecialchars($_POST['pwd'], ENT_QUOTES);
 
-$sql = "SELECT usr_name, usr_password FROM cry_users WHERE usr_name = '$nickPost'";
+$sql = "SELECT usr_name, usr_password FROM cry_users WHERE usr_name LIKE '$nickPost'";
 $result = $conn->query($sql);
 $row = $result->fetch_row();
 
@@ -15,7 +15,7 @@ $pwd = htmlspecialchars($row[1], ENT_QUOTES);
 
 //Comparaison des inputs et des logs dans la DB
 //Pwd vérifié via password_verify (méthode BCRYPT)
-    if ($nickPost === $nick && password_verify($pwdPost, $pwd)) {
+    if (strtoupper($nickPost) === strtoupper($nick) && password_verify($pwdPost, $pwd)) {
         ?>
         <div class="container-fluid black-div underTopDiv">
             <div class="container-fluid mb-3 mt-2 pb-1 knowMore">

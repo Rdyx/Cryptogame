@@ -12,6 +12,15 @@ $sql = "SELECT * FROM topCall
 $result = $conn->query($sql);
 $row = $result->fetch_assoc();
 
+if($row['top_description'] === null){
+    $description = '';
+} else {
+    $description = $row['top_description'];
+}
+
+$target = floatval($row['top_target']);
+$description = ($row['top_description'] === null) ? '' : $row['top_description'];
+
 if($row['usr_name'] === $nick) {
     $callTimerValue = ['Minute', 'Heure', 'Semaine', 'Mois', 'Année', 'Décennie', 'Siècle', 'Millénaire', 'OVER 9000'];
     ?>
@@ -57,16 +66,16 @@ if($row['usr_name'] === $nick) {
                         </td>
                         <td class="align-middle">
                             <input autocomplete="off" step="0.000000001" class="text-center form-control" type="number"
-                                   id="targetPrice" name="targetPrice" placeholder="Prix visé" required>
+                                   id="targetPrice" name="targetPrice" placeholder="Prix visé" value="<?= number_format($target, 8) ?>" required>
                         </td>
                     </tr>
                     <tr>
                         <td class="align-middle">
-                            <label for="description" class="col-form-label">Target</label>
+                            <label for="description" class="col-form-label">Commentaire</label>
                         </td>
                         <td class="align-middle">
                             <textarea class="text-center form-control" type="text" id="description" name="description"
-                                      rows="5" placeholder="Infos supplémentaires sur le call (Laissez vide pour garder l'ancien commentaire)"></textarea>
+                                      rows="5" placeholder="Infos supplémentaires sur le call (Laissez vide pour garder l'ancien commentaire)"><?= $description ?></textarea>
                         </td>
                     </tr>
                 </table>

@@ -211,7 +211,7 @@ class Call
                             </tr>
                             <tr>
                                 <th class="text-center">Prix de départ</th>
-                                <td>' . $this->getCallStartPrice() . ' BTC</td>
+                                <td>' . number_format($this->getCallStartPrice(), 8) . ' BTC</td>
                             </tr>
                             <tr>
                                 <th class="text-center">Target</th>

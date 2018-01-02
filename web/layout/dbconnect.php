@@ -1,9 +1,9 @@
 <?php
 session_start();
 
-$servername = "mysql-cryptogame.alwaysdata.net";
-$username = "150019";
-$password = "topkek";
+$servername = "*";
+$username = "*";
+$password = "*";
 $dbname = "cryptogame_cryptogame";
 $port = 3306;
 $i = 0;
