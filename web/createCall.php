@@ -6,10 +6,9 @@ for($i = 1; $i < 61; $i++){
     $callTimerNumber [] = $i;
 }
 
-$callTimerValue = ['Minute', 'Heure', 'Semaine', 'Mois', 'Année', 'Décennie', 'Siècle', 'Millénaire', 'OVER 9000'];
+$callTimerValue = ['Minute', 'Heure', 'Jour', 'Semaine', 'Mois', 'Année', 'Décennie', 'Siècle', 'Millénaire', 'OVER 9000'];
 
-$sql = "SELECT cry_id, cry_name, cry_fullName FROM cryptos ORDER BY cry_name ASC";
-$result = $conn->query($sql);
+$result = mysqli_query($conn, "SELECT cry_id, cry_name, cry_fullName FROM cryptos ORDER BY cry_name ASC");
 
 while($row = $result->fetch_array()){
     $resultat [] = $row['cry_id'];
@@ -83,7 +82,7 @@ if(!isset($nick) || $nick === 'Guest'){
                     </tr>
                     <tr>
                         <td class="align-middle">
-                            <label for="targetPrice" class="col-form-label">Target</label>
+                            <label for="targetPrice" class="col-form-label">Target (BTC)</label>
                         </td>
                         <td class="align-middle">
                             <input autocomplete="off" step="0.000000001" class="text-center form-control" type="number"

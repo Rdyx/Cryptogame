@@ -3,8 +3,7 @@
 
 <!--FOOTER-->
 <?php
-$sql = "SELECT last_update FROM compteur";
-$result = $conn->query($sql);
+$result = mysqli_query($conn, "SELECT last_update FROM compteur");
 $row = $result->fetch_assoc();
 
 ?>

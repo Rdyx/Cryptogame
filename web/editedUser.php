@@ -3,14 +3,26 @@ require('layout/dbconnect.php');
 require('layout/top.php');
 
 $oldPwd = htmlspecialchars($_POST['oldPwd'], ENT_QUOTES);
-$newPwd = htmlspecialchars($_POST['newPwd']);
-$newPwd2 = htmlspecialchars($_POST['newPwd2']);
-$BTCAdress = htmlspecialchars($_POST['BTCAdress']);
-$ETHAdress = htmlspecialchars($_POST['ETHAdress']);
-$LTCAdress = htmlspecialchars($_POST['LTCAdress']);
+$oldPwd = mysqli_real_escape_string($conn, $oldPwd);
 
-function sqlAdress($arg1, $arg2, $arg3){
-    return "UPDATE cry_users SET usr_$arg3 = '$arg1' WHERE usr_name LIKE '$arg2'";
+$newPwd = htmlspecialchars($_POST['newPwd']);
+$newPwd= mysqli_real_escape_string($conn, $newPwd);
+
+$newPwd2 = htmlspecialchars($_POST['newPwd2']);
+$newPwd2 = mysqli_real_escape_string($conn, $newPwd2);
+
+$BTCAdress = htmlspecialchars($_POST['BTCAdress']);
+$BTCAdress = mysqli_real_escape_string($conn, $BTCAdress);
+
+$ETHAdress = htmlspecialchars($_POST['ETHAdress']);
+$ETHAdress = mysqli_real_escape_string($conn, $ETHAdress);
+
+$LTCAdress = htmlspecialchars($_POST['LTCAdress']);
+$LTCAdress = mysqli_real_escape_string($conn, $LTCAdress);
+
+
+function sqlAdress($conn, $arg1, $arg2, $arg3){
+    return mysqli_query($conn,"UPDATE cry_users SET usr_$arg3 = '$arg1' WHERE usr_name LIKE '$arg2'");
 };
 
 function erreur($arg1, $arg2, $arg3){
@@ -29,28 +41,24 @@ function erreur($arg1, $arg2, $arg3){
 };
 
 if($BTCAdress !== ''){
-    $sql = sqlAdress($BTCAdress, $nick, 'BTCAdress');
-    $conn->query($sql);
+    $sql = sqlAdress($conn, $BTCAdress, $nick, 'BTCAdress');
 };
 if($ETHAdress !== ''){
-    $sql = sqlAdress($ETHAdress, $nick, 'ETHAdress');
-    $conn->query($sql);
+    $sql = sqlAdress($conn, $ETHAdress, $nick, 'ETHAdress');
 };
 if($LTCAdress !== ''){
-    $sql = sqlAdress($LTCAdress, $nick, 'LTCAdress');
-    $conn->query($sql);
+    $sql = sqlAdress($conn, $LTCAdress, $nick, 'LTCAdress');
 };
 
-$sql = "SELECT usr_password FROM cry_users WHERE usr_name = '$nick'";
-$result = $conn->query($sql);
+$result = mysqli_query($conn, "SELECT usr_password FROM cry_users WHERE usr_name = '$nick'");
 $row = $result->fetch_assoc();
 
 if(isset($oldPwd) && $oldPwd !== ''){
     if(password_verify($oldPwd, $row['usr_password'])){
         if($newPwd === $newPwd2){
             $hashedNewPwd = password_hash($newPwd, PASSWORD_DEFAULT);
-            $sql = "UPDATE cry_users SET usr_password = '$hashedNewPwd' WHERE usr_name = '$nick'";
-            $conn->query($sql);
+            $hashedNewPwd = mysqli_real_escape_string($conn, $hashedNewPwd);
+            mysqli_query($conn,"UPDATE cry_users SET usr_password = '$hashedNewPwd' WHERE usr_name = '$nick'");
             echo erreur('Données mises à jour !', 'Ok !', '/index.php/');
         } else {
             echo erreur('Votre nouveau mot de passe n\'est pas identique dans les deux champs !', 'Oups !', '/web/editUser.php/');

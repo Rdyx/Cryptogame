@@ -13,10 +13,11 @@ echo '<div id="listCalls" class="container-fluid black-div underTopDiv">
 
 if(isset($_GET['search'])) {
     $search = htmlspecialchars($_GET['search']);
-    $sql = "SELECT * FROM cryptos
+    $search = mysqli_real_escape_string($conn, $search);
+    $result = mysqli_query($conn, "SELECT * FROM cryptos
             WHERE cry_name LIKE '%$search%'
-            ORDER BY cry_fullName ASC";
-    $result = $conn->query($sql);
+            ORDER BY cry_fullName ASC");
+
     if($result) {
         while ($row = $result->fetch_assoc()) {
             if ($row['cry_lastHour'] <= 0) {
@@ -44,11 +45,12 @@ if(isset($_GET['search'])) {
                     <td><a class="crypto-short-name" href="' . $row['cry_url'] . '">' . $row['cry_name'] . '</a></td>
                   </tr>
                   <tr>
-                    <td colspan="2"><strong>Marketcap : </strong>' . $row['cry_marketcap'] . '</td>
+                    <td><strong>Marketcap<br></strong>' . $row['cry_marketcap'] . '</td>
+                    <td><strong>Volume</strong><br>' . $row['cry_volume'] . '</td>
                   </tr>
                   <tr>
-                    <td><strong>Valeur</strong><br>' . $row['cry_fiatValue'] . '</td>
-                    <td><strong>Volume</strong><br>' . $row['cry_volume'] . '</td>
+                    <td><strong>Valeur FIAT</strong><br>' . $row['cry_fiatValue'] . '</td>
+                    <td><strong>Valeur BTC</strong><br>' . number_format($row['cry_btcValue'], 8) . ' BTC</td>
                   </tr>
                   <tr>
                     <td class="' . $lastHour . '">1h : ' . $row['cry_lastHour'] . '</td>

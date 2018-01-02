@@ -3,12 +3,13 @@ require('layout/dbconnect.php');
 require('layout/top.php');
 require('Class/CallId.php');
 $callId = htmlspecialchars($_GET["callId"]);
+$callId = mysqli_real_escape_string($conn, $callId);
 
-$sql = "SELECT * FROM topCall
+$result = mysqli_query($conn, "SELECT * FROM topCall
                 JOIN cry_users on topCall.usr_id = cry_users.usr_id
                 JOIN cryptos on topCall.cry_id = cryptos.cry_id
-                WHERE top_id = $callId";
-$result = $conn->query($sql);
+                WHERE top_id = $callId");
+
 while ($row = $result->fetch_assoc()) {
     if($row['usr_totalCallNumber'] == 0){
         $score = 0;

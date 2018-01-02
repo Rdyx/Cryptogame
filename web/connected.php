@@ -3,15 +3,20 @@ require('layout/dbconnect.php');
 require('layout/top.php');
 
 if(!isset($_SESSION['nick']) || $_SESSION['nick'] === 'Guest') {
-$nickPost = htmlspecialchars($_POST['nick'], ENT_QUOTES);
-$pwdPost = htmlspecialchars($_POST['pwd'], ENT_QUOTES);
+    $nickPost = htmlspecialchars($_POST['nick'], ENT_QUOTES);
+    $nickPost = mysqli_real_escape_string($conn, $nickPost);
 
-$sql = "SELECT usr_name, usr_password FROM cry_users WHERE usr_name LIKE '$nickPost'";
-$result = $conn->query($sql);
-$row = $result->fetch_row();
+    $pwdPost = htmlspecialchars($_POST['pwd'], ENT_QUOTES);
+    $pwdPost = mysqli_real_escape_string($conn, $pwdPost);
 
-$nick = htmlspecialchars($row[0], ENT_QUOTES);
-$pwd = htmlspecialchars($row[1], ENT_QUOTES);
+    $result = mysqli_query($conn, "SELECT usr_name, usr_password FROM cry_users WHERE usr_name LIKE '$nickPost'");
+    $row = $result->fetch_row();
+
+    $nick = htmlspecialchars($row[0], ENT_QUOTES);
+    $nick = mysqli_real_escape_string($conn, $nick);
+
+    $pwd = htmlspecialchars($row[1], ENT_QUOTES);
+    $pwd = mysqli_real_escape_string($conn, $pwd);
 
 //Comparaison des inputs et des logs dans la DB
 //Pwd vérifié via password_verify (méthode BCRYPT)

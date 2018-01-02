@@ -4,16 +4,17 @@ require('layout/top.php');
 
 if(!isset($_SESSION['nick']) || $_SESSION['nick'] === 'Guest') {
     $nickPost = htmlspecialchars($_POST['nick'], ENT_QUOTES);
-    $pwdPost = htmlspecialchars(password_hash($_POST['pwd'], PASSWORD_DEFAULT), ENT_QUOTES);
+    $nickPost = mysqli_real_escape_string($conn, $nickPost);
 
-    $sql = "SELECT usr_name FROM cry_users WHERE usr_name LIKE '$nickPost'";
-    $result = $conn->query($sql);
+    $pwdPost = htmlspecialchars(password_hash($_POST['pwd'], PASSWORD_DEFAULT), ENT_QUOTES);
+    $pwdPost = mysqli_real_escape_string($conn, $pwdPost);
+
+    $result = mysqli_query($conn, "SELECT usr_name FROM cry_users WHERE usr_name LIKE '$nickPost'");
     $row = $result->fetch_assoc();
 
     if ($row['usr_name'] === null) {
-        $sql = "INSERT INTO cry_users (usr_name, usr_password, usr_totalCallNumber, usr_SuccessCall)
-                VALUES ('$nickPost', '$pwdPost', 0, 0)";
-        $result = $conn->query($sql);
+        $result = mysqli_query($conn, "INSERT INTO cry_users (usr_name, usr_password, usr_totalCallNumber, usr_SuccessCall)
+                VALUES ('$nickPost', '$pwdPost', 0, 0)");
         ?>
         <div class="container-fluid black-div underTopDiv">
             <div class="container-fluid mb-3 mt-2 pb-1 knowMore">

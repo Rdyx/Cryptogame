@@ -5,18 +5,17 @@ require('Class/Call.php');
 require('Class/UserId.php');
 
 $userId = htmlspecialchars($_GET["userId"]);
+$userId = mysqli_real_escape_string($conn, $userId);
 
-$sql = "SELECT * FROM topCall
+$result = mysqli_query($conn, "SELECT * FROM topCall
         JOIN cry_users on topCall.usr_id = cry_users.usr_id
         JOIN cryptos on topCall.cry_id = cryptos.cry_id
         WHERE cry_users.usr_name LIKE '$userId'
-        ORDER BY topCall.top_id DESC";
-$result = $conn->query($sql);
+        ORDER BY topCall.top_id DESC");
 $row = $result->fetch_assoc();
 
 if($row['usr_totalCallNumber'] === null) {
-    $sql = "SELECT usr_name, usr_BTCAdress, usr_ETHAdress, usr_LTCAdress FROM cry_users WHERE usr_name LIKE '$userId'";
-    $result = $conn->query($sql);
+    $result = mysqli_query($conn, "SELECT usr_name, usr_BTCAdress, usr_ETHAdress, usr_LTCAdress FROM cry_users WHERE usr_name LIKE '$userId'");
     $row = $result->fetch_assoc();
 
     if(isset($row['usr_name'])){

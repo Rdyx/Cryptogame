@@ -6,10 +6,11 @@ for($i = 1; $i < 61; $i++){
 }
 
 $callId = htmlspecialchars($_GET['callId']);
-$sql = "SELECT * FROM topCall
+$callId = mysqli_real_escape_string($conn, $callId);
+
+$result = mysqli_query($conn, "SELECT * FROM topCall
         JOIN cry_users ON topCall.usr_id = cry_users.usr_id
-        WHERE usr_name = '$nick' AND top_id = $callId";
-$result = $conn->query($sql);
+        WHERE usr_name = '$nick' AND top_id = $callId");
 $row = $result->fetch_assoc();
 
 if($row['top_description'] === null){
@@ -22,7 +23,7 @@ $target = floatval($row['top_target']);
 $description = ($row['top_description'] === null) ? '' : $row['top_description'];
 
 if($row['usr_name'] === $nick) {
-    $callTimerValue = ['Minute', 'Heure', 'Semaine', 'Mois', 'Année', 'Décennie', 'Siècle', 'Millénaire', 'OVER 9000'];
+    $callTimerValue = ['Minute', 'Heure', 'Jour', 'Semaine', 'Mois', 'Année', 'Décennie', 'Siècle', 'Millénaire', 'OVER 9000'];
     ?>
     <div class="container-fluid black-div underTopDiv">
         <div class="container-fluid mb-3 mt-2 pb-1 knowMore">
@@ -62,7 +63,7 @@ if($row['usr_name'] === $nick) {
                     </tr>
                     <tr>
                         <td class="align-middle">
-                            <label for="targetPrice" class="col-form-label">Target</label>
+                            <label for="targetPrice" class="col-form-label">Target (BTC)</label>
                         </td>
                         <td class="align-middle">
                             <input autocomplete="off" step="0.000000001" class="text-center form-control" type="number"

@@ -2,24 +2,25 @@
 require('layout/dbconnect.php');
 require('layout/top.php');
 $callId = htmlspecialchars($_GET['callId']);
+$callId = mysqli_real_escape_string($conn, $callId);
 
 if(isset($_SESSION['nick']) || $_SESSION['nick'] !== 'Guest') {
     $nick = htmlspecialchars($_SESSION['nick']);
-    $sql = "SELECT usr_name, usr_totalCallNumber FROM topCall
+    $nick = mysqli_real_escape_string($conn, $nick);
+
+    $result = mysqli_query($conn, "SELECT usr_name, usr_totalCallNumber FROM topCall
             JOIN cry_users on topCall.usr_id = cry_users.usr_id
-            WHERE usr_name LIKE '$nick'";
-    $result = $conn->query($sql);
+            WHERE usr_name LIKE '$nick'");
     $row = $result->fetch_row();
 
     $number = $row[1];
 
     if ($row[0] === $nick) {
-        $sql = "DELETE FROM topCall
-            WHERE top_id = $callId";
-        $conn->query($sql);
+        mysqli_query($conn, "DELETE FROM topCall
+            WHERE top_id = $callId");
 
-        $sql = "UPDATE cry_users SET usr_totalCallNumber = usr_totalCallNumber+1 WHERE usr_name = '$nick'";
-        $conn->query($sql);
+        mysqli_query($conn, "UPDATE cry_users SET 
+            usr_totalCallNumber = usr_totalCallNumber+1 WHERE usr_name = '$nick'");
         ?>
         <div class="container-fluid black-div underTopDiv">
             <div class="container-fluid mb-3 mt-2 pb-1 knowMore">

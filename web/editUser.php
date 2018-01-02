@@ -2,8 +2,7 @@
 require('layout/dbconnect.php');
 require('layout/top.php');
 
-$sql = "SELECT usr_BTCAdress, usr_ETHAdress, usr_LTCAdress FROM cry_users WHERE usr_name = '$nick'";
-$result = $conn->query($sql);
+$result = mysqli_query($conn, "SELECT usr_BTCAdress, usr_ETHAdress, usr_LTCAdress FROM cry_users WHERE usr_name = '$nick'");
 $row = $result->fetch_assoc();
 ?>
 
