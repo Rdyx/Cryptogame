@@ -72,3 +72,5 @@ create index topCall_cryptos_cry_id_fk
 create index topCall_user_usr_id_fk
 	on topCall (usr_id)
 ;
+
+INSERT INTO compteur (com_visites, last_update) VALUE (0, NULL)
