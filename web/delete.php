@@ -12,7 +12,7 @@ if(isset($_SESSION['nick']) || $_SESSION['nick'] !== 'Guest') {
     $row = $result->fetch_row();
 
     $number = $row[1];
-    var_dump($number);
+
     if ($row[0] === $nick) {
         $sql = "DELETE FROM topCall
             WHERE top_id = $callId";
