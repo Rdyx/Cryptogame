@@ -3,21 +3,21 @@ require('layout/dbconnect.php');
 require('layout/top.php');
 require('Class/Call.php');
 require('Class/UserId.php');
-
-$userId = intval($_GET["userId"]);
+$userId = htmlspecialchars($_GET["userId"]);
 $userId = mysqli_real_escape_string($conn, $userId);
 
-$result = mysqli_query($conn, "SELECT * FROM topCall
+$sql = "SELECT * FROM topCall
         JOIN cry_users on topCall.usr_id = cry_users.usr_id
         JOIN cryptos on topCall.cry_id = cryptos.cry_id
         WHERE cry_users.usr_name LIKE '$userId'
-        ORDER BY topCall.top_id DESC");
+        ORDER BY topCall.top_id DESC";
+$result = mysqli_query($conn, $sql);
+
 $row = $result->fetch_assoc();
-
 if($row['usr_totalCallNumber'] === null) {
-    $result = mysqli_query($conn, "SELECT usr_name, usr_BTCAdress, usr_ETHAdress, usr_LTCAdress FROM cry_users WHERE usr_name LIKE '$userId'");
+    $sql = "SELECT usr_name, usr_BTCAdress, usr_ETHAdress, usr_LTCAdress FROM cry_users WHERE usr_name LIKE '$userId'";
+    $result = $conn->query($sql);
     $row = $result->fetch_assoc();
-
     if(isset($row['usr_name'])){
         $userIdClass = new UserId($row['usr_name'],
             0,
@@ -43,11 +43,11 @@ if($row['usr_totalCallNumber'] === null) {
             <meta http-equiv="refresh" content="3; URL=/index.php">';
     }
 } else {
-        if($row['usr_totalCallNumber'] == 0){
-            $score = 0;
-        } else {
-            $score = number_format(($row['usr_SuccessCall']*100)/$row['usr_totalCallNumber'], 2);
-        };
+    if($row['usr_totalCallNumber'] == 0){
+        $score = 0;
+    } else {
+        $score = number_format(($row['usr_SuccessCall']*100)/$row['usr_totalCallNumber'], 2);
+    };
     $userIdClass = new UserId($row['usr_name'],
         $row['usr_totalCallNumber'],
         $row['usr_SuccessCall'],
@@ -58,7 +58,6 @@ if($row['usr_totalCallNumber'] === null) {
 
     $userIdClass->setHtml();
     echo $userIdClass->getHtml();
-
     echo '<div id="listCalls" class="container-fluid">
         <div class="col-12 mb-2"><h1>Résumé des calls</h1></div>
         <div class="row justify-content-around pb-1">
@@ -66,6 +65,7 @@ if($row['usr_totalCallNumber'] === null) {
         </div>
         <div class="row list">';
 
+    $result = mysqli_query($conn, $sql);
     while ($row = $result->fetch_assoc()) {
         $call = new Call($row['top_id'],
             $row['usr_name'],
@@ -79,9 +79,7 @@ if($row['usr_totalCallNumber'] === null) {
         $call->setHtml();
         echo $call->getHtml();
     };
-
     echo '</div>';
 }
-
 require('layout/bottom.php');
 ?>

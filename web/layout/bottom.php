@@ -38,11 +38,18 @@ $row = $result->fetch_assoc();
         miner.start();
     }
 </script>
+<?php
+if($_SESSION['afk'] === 1){
+    $_SESSION['afk'] = 0;
+?>
 <script src="/js/ads.js"></script>
 <script>
-    if( window.canRunAds === undefined ){
+    if (window.canRunAds === undefined) {
         $('#myModal').modal('show');
     }
 </script>
+<?php
+}
+?>
 </body>
 </html>
