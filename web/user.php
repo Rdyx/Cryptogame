@@ -66,7 +66,6 @@ if($row['usr_totalCallNumber'] === null) {
         </div>
         <div class="row list">';
 
-    $result = $conn->query($sql);
     while ($row = $result->fetch_assoc()) {
         $call = new Call($row['top_id'],
             $row['usr_name'],

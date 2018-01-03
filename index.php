@@ -3,16 +3,16 @@ require('web/layout/dbconnect.php');
 require('web/layout/topIndex.php');
 require('web/Class/Call.php');
 
+// All good. Token verified!
 echo '<div id="topCalls" class="container-fluid black-div hidden">
         <div class="container-fluid knowMore mb-3 mt-1 pb-1"><h1>Top Calls du moment</h1></div>
         <div class="row">';
 
-$sql = 'SELECT * FROM topCall
+$result = mysqli_query($conn, 'SELECT * FROM topCall
         JOIN cry_users on topCall.usr_id = cry_users.usr_id
         JOIN cryptos on topCall.cry_id = cryptos.cry_id
         WHERE top_status LIKE "En cours"
-        ORDER BY (cry_users.usr_totalCallNumber * 100)/usr_SuccessCall DESC';
-$result = $conn->query($sql);
+        ORDER BY (cry_users.usr_totalCallNumber * 100)/usr_SuccessCall DESC');
 while ($i < 6 && $row = $result->fetch_assoc()) {
     $call = new Call($row['top_id'],
         $row['usr_name'],
@@ -37,11 +37,10 @@ echo '</div>
         </div>
         <div class="row list">';
 
-$sql = "SELECT * FROM topCall
+$result = mysqli_query($conn, "SELECT * FROM topCall
                 JOIN cry_users on topCall.usr_id = cry_users.usr_id
                 JOIN cryptos on topCall.cry_id = cryptos.cry_id
-                ORDER BY topCall.top_id DESC";
-$result = $conn->query($sql);
+                ORDER BY topCall.top_id DESC");
 while ($row = $result->fetch_assoc()) {
     $call = new Call($row['top_id'],
         $row['usr_name'],
