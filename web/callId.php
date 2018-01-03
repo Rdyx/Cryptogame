@@ -2,7 +2,7 @@
 require('layout/dbconnect.php');
 require('layout/top.php');
 require('Class/CallId.php');
-$callId = htmlspecialchars($_GET["callId"]);
+$callId = intval($_GET["callId"]);
 $callId = mysqli_real_escape_string($conn, $callId);
 
 $result = mysqli_query($conn, "SELECT * FROM topCall

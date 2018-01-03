@@ -4,7 +4,7 @@ require('layout/top.php');
 require('Class/Call.php');
 require('Class/UserId.php');
 
-$userId = htmlspecialchars($_GET["userId"]);
+$userId = intval($_GET["userId"]);
 $userId = mysqli_real_escape_string($conn, $userId);
 
 $result = mysqli_query($conn, "SELECT * FROM topCall

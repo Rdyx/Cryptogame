@@ -5,7 +5,7 @@ for($i = 1; $i < 61; $i++){
     $callTimerNumber [] = $i;
 }
 
-$callId = htmlspecialchars($_GET['callId']);
+$callId = intval($_GET['callId']);
 $callId = mysqli_real_escape_string($conn, $callId);
 
 $result = mysqli_query($conn, "SELECT * FROM topCall

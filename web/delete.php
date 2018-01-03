@@ -1,7 +1,7 @@
 <?php
 require('layout/dbconnect.php');
 require('layout/top.php');
-$callId = htmlspecialchars($_GET['callId']);
+$callId = intval($_GET['callId']);
 $callId = mysqli_real_escape_string($conn, $callId);
 
 if(isset($_SESSION['nick']) || $_SESSION['nick'] !== 'Guest') {
