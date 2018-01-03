@@ -3,25 +3,24 @@ require('layout/dbconnect.php');
 require('layout/top.php');
 
 if(!isset($_SESSION['nick']) || $_SESSION['nick'] === 'Guest') {
-?>
+    ?>
     <div class="container-fluid black-div underTopDiv">
         <div class="container-fluid mb-3 mt-2 pb-1 knowMore">
-            <h1>Connexion</h1>
+            <h1>Mot de passe oublié</h1>
         </div>
         <div class="row justify-content-around mt-5">
             <div class="col-sm-3">
-                <form action="/web/connected.php" method="post">
+                <form action="/web/resetPassword.php" method="post">
                     <label for="nick">Pseudo</label>
                     <input class="form-control" type="text" name="nick" id="nick" required>
-                    <label class="mt-2" for="pwd">Mot de passe</label>
-                    <input class="form-control" type="password" name="pwd" id="pwd" required>
+                    <label class="mt-2" for="pinCode">Cope pin</label>
+                    <input class="form-control" type="password" name="pinCode" id="pinCode" pattern="[0-9]*" inputmode="numeric" required>
                     <button class="btn btn-outline-success mt-3" type="submit">Se connecter</button>
                 </form>
-                <p class="mt-4"><a href="/web/forgotPassword.php">Mot de passe oublié ?</a></p>
             </div>
         </div>
     </div>
-<?php
+    <?php
 } else {
     ?>
     <div class="container-fluid black-div underTopDiv">

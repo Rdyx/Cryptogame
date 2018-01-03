@@ -15,6 +15,8 @@ if(!isset($_SESSION['nick']) || $_SESSION['nick'] === 'Guest') {
                     <input class="form-control" type="text" name="nick" id="nick" required>
                     <label class="mt-2" for="pwd">Mot de passe</label>
                     <input class="form-control" type="password" name="pwd" id="pwd" required>
+                    <label class="mt-2" for="pinCode">Code Pin<br> En cas de perte de mot de passe</label>
+                    <input class="form-control" type="password" name="pinCode" id="pinCode" pattern="[0-9]*" inputmode="numeric" required>
                     <button class="btn btn-outline-success mt-3" type="submit">S'enregistrer</button>
                 </form>
             </div>

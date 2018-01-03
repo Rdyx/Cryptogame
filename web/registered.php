@@ -9,12 +9,15 @@ if(!isset($_SESSION['nick']) || $_SESSION['nick'] === 'Guest') {
     $pwdPost = htmlspecialchars(password_hash($_POST['pwd'], PASSWORD_DEFAULT), ENT_QUOTES);
     $pwdPost = mysqli_real_escape_string($conn, $pwdPost);
 
+    $pinCode = htmlspecialchars(password_hash($_POST['pinCode'], PASSWORD_DEFAULT));
+    $pinCode = mysqli_real_escape_string($conn, $pinCode);
+
     $result = mysqli_query($conn, "SELECT usr_name FROM cry_users WHERE usr_name LIKE '$nickPost'");
     $row = $result->fetch_assoc();
 
     if ($row['usr_name'] === null) {
-        $result = mysqli_query($conn, "INSERT INTO cry_users (usr_name, usr_password, usr_totalCallNumber, usr_SuccessCall)
-                VALUES ('$nickPost', '$pwdPost', 0, 0)");
+        $result = mysqli_query($conn, "INSERT INTO cry_users (usr_name, usr_password, usr_totalCallNumber, usr_SuccessCall, usr_pinCode)
+                VALUES ('$nickPost', '$pwdPost', 0, 0, '$pinCode')");
         ?>
         <div class="container-fluid black-div underTopDiv">
             <div class="container-fluid mb-3 mt-2 pb-1 knowMore">
