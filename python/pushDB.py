@@ -109,10 +109,10 @@ try:
     while j < len(getCallEndDate):
         if int(getCallEndDate[j][0]) < int(dateDBCompare):
             cur.execute("SELECT top_target, cryptos.cry_btcValue FROM topCall JOIN cryptos on topCall.cry_id = cryptos.cry_id WHERE topCall.cry_id = cryptos.cry_id AND top_id = '"+str(getCallEndDate[j][1])+"'")
-            comparaisonTargetStart = cur.fetchall()
-            print('target ' + comparaisonTargetStart[0][0])
-            print('start ' +comparaisonTargetStart[0][1])
-            if float(comparaisonTargetStart[0][0]) < float(comparaisonTargetStart[0][1]):
+            comparaisonTargetCurrent = cur.fetchall()
+            print('target ' + comparaisonTargetCurrent[0][0])
+            print('Current ' +comparaisonTargetCurrent[0][1])
+            if float(comparaisonTargetCurrent[0][0]) > float(comparaisonTargetCurrent[0][1]):
                 print('only total')
                 cur.execute ("UPDATE topCall JOIN cry_users ON topCall.usr_id = cry_users.usr_id SET top_status = 'Fini', cry_users.usr_totalCallNumber = cry_users.usr_totalCallNumber+1 WHERE top_id = '"+str(getCallEndDate[j][1])+"' AND topCall.usr_id = cry_users.usr_id")
             else:
