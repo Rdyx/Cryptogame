@@ -8,7 +8,7 @@ if(isset($_SESSION['nick']) || $_SESSION['nick'] !== 'Guest') {
     $nick = htmlspecialchars($_SESSION['nick']);
     $nick = mysqli_real_escape_string($conn, $nick);
 
-    $result = mysqli_query($conn, "SELECT usr_name, usr_totalCallNumber FROM topCall
+    $result = mysqli_query($conn, "SELECT usr_name, usr_totalCallNumber, top_status FROM topCall
             JOIN cry_users on topCall.usr_id = cry_users.usr_id
             WHERE usr_name LIKE '$nick'");
     $row = $result->fetch_row();

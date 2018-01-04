@@ -3,6 +3,7 @@ require('layout/dbconnect.php');
 require('layout/top.php');
 $_SESSION = array();
 session_destroy();
+$_SESSION['afk'] = 1;
 ?>
     <div class="container-fluid black-div underTopDiv">
         <div class="container-fluid mb-3 mt-2 pb-1 knowMore">
@@ -14,7 +15,7 @@ session_destroy();
         </div>
     </div>
     <!-- Redirection automatique au bout de 3 secondes sur l\'index -->
-    <meta http-equiv="refresh" content="3; URL=/index.php">
+<!--    <meta http-equiv="refresh" content="3; URL=/index.php">-->
 <?php
 require('layout/bottom.php');
 ?>

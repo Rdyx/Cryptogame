@@ -183,7 +183,7 @@ class Call
      */
     public function setHtml()
     {
-        if($_SESSION['nick'] === $this->getCaller()){
+        if($_SESSION['nick'] === $this->getCaller() && $this->getCallStatus() === 'En cours'){
             $editAndSuppr = '<tr>
                                 <td colspan="2"><a class="col" href="/web/edit.php/?callId='.$this->getCallId().'">Editer</a><a class="col" href="/web/delete.php/?callId='.$this->getCallId().'">Supprimer</a></td>
                              </tr>';
