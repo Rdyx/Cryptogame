@@ -17,7 +17,7 @@ if(!isset($_SESSION['nick']) || $_SESSION['nick'] === 'Guest') {
                     <input class="form-control" type="password" name="pwd" id="pwd" required>
                     <button class="btn btn-outline-success mt-3" type="submit">Se connecter</button>
                 </form>
-                <p class="mt-4"><a href="/web/forgotPassword.php">Mot de passe oublié ?</a></p>
+                <p class="mt-4"><a href="/web/resetPassword.php">Mot de passe oublié ?</a></p>
             </div>
         </div>
     </div>
