@@ -383,7 +383,7 @@ class CallId
                 </tr>
                 <tr>
                     <th class="text-center">Départ</th>
-                    <td>'.$this->getCallStart().' BTC</td>
+                    <td>'.number_format($this->getCallStart(), 8).' BTC</td>
                 </tr>
                 <tr>
                     <th class="text-center">Target</th>
